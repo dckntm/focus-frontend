@@ -1,0 +1,27 @@
+.container{
+    background-color: #5903aa;
+    width: 100vw;
+    height: 9.5vh;
+    margin-top: -1%;
+    margin-left: -8px;
+    display: flex;
+}
+
+.text{
+    color: white;
+    padding-top: 0vh;
+    padding-left: 2vw;
+    font-size: 2rem;
+}
+
+.input{
+    font-size: 2rem;
+    background-color: #5903aa;
+    color: white;
+    outline: none;
+    border-top: 1px;
+    border-left: 1px;
+    border-right: 1px;
+    border-bottom-color: white;
+}
+
