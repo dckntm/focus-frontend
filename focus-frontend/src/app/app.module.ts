@@ -3,10 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FullPageComponent } from './create-report/full-page/full-page.component';
+import { HeaderComponent } from './create-report/header/header.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FullPageComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
