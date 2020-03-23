@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FullPageComponent } from './create-report/full-page/full-page.component';
 import { HeaderComponent } from './create-report/header/header.component';
+import { ModuleListComponent } from './create-report/module-list/module-list.component';
+import { ModuleComponent } from './create-report/module/module.component';
 
 
 @NgModule({
@@ -12,12 +14,15 @@ import { HeaderComponent } from './create-report/header/header.component';
     AppComponent,
     FullPageComponent,
     HeaderComponent,
+    ModuleListComponent,
+    ModuleComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModuleComponent],
 })
 export class AppModule { }
