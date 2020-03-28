@@ -1,5 +1,5 @@
-import { Component, OnInit, Inject, ViewContainerRef } from '@angular/core';
-import { AddModuleService } from '../services/add-module.service'
+import { Component, OnInit, Inject, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+import { ModuleComponent } from '../module/module.component';
 
 @Component({
   selector: 'app-module-list',
@@ -8,15 +8,15 @@ import { AddModuleService } from '../services/add-module.service'
 })
 export class ModuleListComponent implements OnInit {
 
-  constructor() {  
+  constructor(private vf:ViewContainerRef, private componentFactoryResolver: ComponentFactoryResolver) {  
   }
 
   ngOnInit(): void {
   }
 
-  addNewModule(@Inject(AddModuleService) service, @Inject(ViewContainerRef) ViewContainerRef){
-    service.setRootViewContainerRef(ViewContainerRef);
-    service.addModuleComponent();
+  addNewModule(){
+    let resolver = this.componentFactoryResolver.resolveComponentFactory(ModuleComponent);
+    let componentFactory = this.vf.createComponent(resolver);
   }
 
 }
