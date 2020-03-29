@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver, ViewChild } from '@angular/core';
 import { ModuleComponent } from '../module/module.component';
 
 @Component({
@@ -7,16 +7,17 @@ import { ModuleComponent } from '../module/module.component';
   styleUrls: ['./module-list.component.scss']
 })
 export class ModuleListComponent implements OnInit {
+  @ViewChild('model', {read: ViewContainerRef}) private model: any;
 
-  constructor(private vf:ViewContainerRef, private componentFactoryResolver: ComponentFactoryResolver) {  
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {  
   }
 
   ngOnInit(): void {
   }
 
   addNewModule(){
-    let resolver = this.componentFactoryResolver.resolveComponentFactory(ModuleComponent);
-    let componentFactory = this.vf.createComponent(resolver);
+    let moduleComponent = this.componentFactoryResolver.resolveComponentFactory( ModuleComponent );
+    let moduleComponentRef = this.model.createComponent( moduleComponent );
   }
 
 }
