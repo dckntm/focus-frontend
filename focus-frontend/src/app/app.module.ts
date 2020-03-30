@@ -10,6 +10,12 @@ import { ModuleListComponent } from './create-report/module-list/module-list.com
 import { ModuleComponent } from './create-report/module/module.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModulesComponent } from './create-report/modules/modules.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
@@ -19,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HeaderComponent,
     ModuleListComponent,
     ModuleComponent,
+    ModulesComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +33,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     MatSidenavModule,
     BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
     
   ],
   exports: [
