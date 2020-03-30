@@ -8,6 +8,8 @@ import { FullPageComponent } from './create-report/full-page/full-page.component
 import { HeaderComponent } from './create-report/header/header.component';
 import { ModuleListComponent } from './create-report/module-list/module-list.component';
 import { ModuleComponent } from './create-report/module/module.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -22,6 +24,12 @@ import { ModuleComponent } from './create-report/module/module.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    MatSidenavModule,
+    BrowserAnimationsModule,
+    
+  ],
+  exports: [
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
