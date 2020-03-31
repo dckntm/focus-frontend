@@ -18,7 +18,7 @@ export class ModulesComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private componentFactoryResolver: ComponentFactoryResolver,) {}
 
   addNewModule(){
     let moduleComponent = this.componentFactoryResolver.resolveComponentFactory( ModuleComponent );

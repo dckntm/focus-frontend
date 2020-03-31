@@ -4,7 +4,7 @@ import { FullPageComponent } from '../app/create-report/full-page/full-page.comp
 
 
 const routes: Routes = [
-  {path: '', component: FullPageComponent}
+  {path: '', component: FullPageComponent},
 ];
 
 @NgModule({
