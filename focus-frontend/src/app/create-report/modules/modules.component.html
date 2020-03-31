@@ -7,8 +7,8 @@
     <mat-nav-list>
       <form #formRef = "ngForm">
         <div *ngFor = "let module of state.modules; let in = index">
-            <div class="gorm-group">
-              <a mat-list-item href="#"><input type="text" [(ngModel)] = "state.modules[in].value" name="name{{in}}" #name = "ngModel" required></a>
+            <div class="form-group">
+              <input type="button" MatListModule [(ngModel)] = "state.modules[in].value" name="name{{in}}" (click) = "setModule('Module'+(in+1))">
             </div>
         </div>    
     </form>
