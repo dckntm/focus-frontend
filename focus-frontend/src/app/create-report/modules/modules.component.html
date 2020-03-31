@@ -5,8 +5,13 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Модули</mat-toolbar>
     <mat-nav-list>
-      <ng-container #model></ng-container>
-      
+      <form #formRef = "ngForm">
+        <div *ngFor = "let module of modules; let in = index">
+            <div class="gorm-group">
+              <a mat-list-item href="#"><input type="text" [(ngModel)] = "modules[in].value" name="name{{in}}" #name = "ngModel" required></a>
+            </div>
+        </div>    
+    </form>
     </mat-nav-list>
     <button class="button" (click)="addNewModule()">
       addNewModule
@@ -24,6 +29,6 @@
       </button>
       <span>focus-frontend</span>
     </mat-toolbar>
-    <router-outlet></router-outlet>
+    <ng-container #model></ng-container>
   </mat-sidenav-content>
 </mat-sidenav-container>

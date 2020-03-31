@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FullPageComponent } from '../app/create-report/full-page/full-page.component'
+import { ModulesComponent } from '../app/create-report/modules/modules.component'
 
 
 const routes: Routes = [
-  {path: '', component: FullPageComponent},
+  {path: '', component: ModulesComponent},
 ];
 
 @NgModule({

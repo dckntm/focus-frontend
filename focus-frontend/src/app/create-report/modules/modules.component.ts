@@ -10,6 +10,7 @@ import { ModuleComponent } from '../module/module.component';
   styleUrls: ['./modules.component.scss']
 })
 export class ModulesComponent {
+  modules = []
   @ViewChild('model', {read: ViewContainerRef}) private model: any;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -21,6 +22,7 @@ export class ModulesComponent {
   constructor(private breakpointObserver: BreakpointObserver, private componentFactoryResolver: ComponentFactoryResolver,) {}
 
   addNewModule(){
+    this.modules.push({value: 'Module' + this.modules.length})
     let moduleComponent = this.componentFactoryResolver.resolveComponentFactory( ModuleComponent );
     let moduleComponentRef = this.model.createComponent( moduleComponent );
   }
