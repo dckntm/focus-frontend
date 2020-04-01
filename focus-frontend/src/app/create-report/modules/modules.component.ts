@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewContainerRef, ComponentFactoryResolver, OnInit, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, ComponentFactoryResolver, OnInit, AfterViewInit, Type } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -10,7 +10,7 @@ import { ModuleComponent } from '../module/module.component';
   styleUrls: ['./modules.component.scss']
 })
 export class ModulesComponent implements AfterViewInit {
-  
+  moduleComponents: Array<ViewContainerRef> = [];
   state = {
     modules: [],
     currentModule: '',
@@ -19,6 +19,7 @@ export class ModulesComponent implements AfterViewInit {
   realSizeModules = 0;
 
   @ViewChild('model', {read: ViewContainerRef}) private model: any;
+
   ngAfterViewInit(){
     this.addNewModule();
   }
@@ -32,23 +33,30 @@ export class ModulesComponent implements AfterViewInit {
   constructor(private breakpointObserver: BreakpointObserver, private componentFactoryResolver: ComponentFactoryResolver,) {}
 
   addNewModule(){
+    console.log(this.model);
     this.realSizeModules += 1;
-    this.state.modules.push({value: 'Module' + this.realSizeModules})
+    this.state.modules.push({value: 'Module' + this.realSizeModules});
     this.model.clear();
     let moduleComponent = this.componentFactoryResolver.resolveComponentFactory( ModuleComponent );
     let moduleComponentRef = this.model.createComponent( moduleComponent );
+    this.moduleComponents.push(moduleComponentRef);
     (<ModuleComponent>moduleComponentRef.instance).value = {
       title: 'Module'+this.realSizeModules,
     };
     this.state.currentModule = 'Module'+this.realSizeModules;
-    console.log(this.state.modules);
-    console.log(this.state.currentModule);
+    
     console.log('Module added');
+    console.log(this.state.modules);
+    console.log("current module is "+this.state.currentModule);
+    console.log(this.moduleComponents);
   }
 
   setModule(value){
     this.state.currentModule = value;
-    console.log("current module is "+this.state.currentModule)
+    this.model.clear();
+    this.model = this.moduleComponents[this.state.currentModule];
+    console.log("current module is "+this.state.currentModule);
+    console.log(this.model)
   }
   
 }

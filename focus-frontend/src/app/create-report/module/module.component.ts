@@ -6,6 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./module.component.scss']
 })
 export class ModuleComponent implements OnInit {
+  clear() {
+    throw new Error("Method not implemented.");
+  }
   value: any = null;
 
   constructor() { }
