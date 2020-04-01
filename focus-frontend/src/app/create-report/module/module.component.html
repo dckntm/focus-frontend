@@ -1,4 +1,24 @@
 <div class="container" [ngStyle]="currentStyles">
     <p>Title: {{value?.title}}</p>
+    <form #formRef = "ngForm">
+        <div *ngFor = "let section of sections; let in = index">
+            <div class="form-group">
+                <input type="text" [(ngModel)] = "sections[in].title" name="name1{{in}}" #name1 = "ngModel" required>
+                <input type="button" value="Изменить" (click) = "changeRepeatableness(in)">
+                <hr>
+  
+                <div *ngFor = "let question of sections[in].questions; let ind = index">
+  
+                    <input type="text" [(ngModel)] = "sections[in].questions[ind].questionText" name="name2{{ind}}">
+                    <input type="button" (click)="addNewQuestion(in)" value="Добавить вопрос">
+                </div>
+            </div>
+            <br>
+        </div>
+        <button [disabled]="!formRef.form.valid" (click)="addNewSection()">Добавить секцию</button>
+    </form>
+    <br>
+    <br>
+    {{sections | json}}
 </div>
 

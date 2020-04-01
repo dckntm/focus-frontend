@@ -39,12 +39,14 @@ export class ModulesComponent implements AfterViewInit {
     console.log(this.model);
     
     this.realSizeModules += 1;
-    this.state.currentModule += 1;
+    this.state.currentModule = this.moduleComponents.length;
     
     if(this.moduleComponents.length > 0){
-      this.moduleComponents[this.state.currentModule - 1].currentStyles = {
-        display: 'none',
-      }
+      for(let i = 0; i <= this.state.currentModule - 1; i++){
+        this.moduleComponents[i].currentStyles = {
+          display: 'none',
+        }
+      }     
     }
     
     this.state.modules.push({value: 'Module' + this.realSizeModules});
