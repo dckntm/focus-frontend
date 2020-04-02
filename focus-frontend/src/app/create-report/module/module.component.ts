@@ -58,6 +58,7 @@ export class ModuleComponent implements AfterViewInit {
 
   changeRepeatableness(index){
     this.questionnaire.sections[index].repeatable = !this.questionnaire.sections[index].repeatable;
+    console.log(this.questionnaire.sections[index].repeatable)
   }
   
 }

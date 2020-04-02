@@ -17,7 +17,52 @@
   z-index: 1;
 }
 
+.input{
+  font-size: 1.5rem;
+  background-color: inherit;
+  color: white;
+  outline: none;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+
+}
+
 .postButton{
   position: fixed;
   bottom: 0;
+  width: 14vw;
+  left: 0;
+  border-radius: 0%;
+  height: 5vh;
+  background-color: rgb(228, 228, 228);
+  border: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+}
+
+.postButton:active{
+  background-color: grey;
+}
+
+.button {
+  height: 5vh;
+  width: 14vw;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: white;
+  margin: 2px 0;
+  border: solid 1px transparent;
+  border-radius: 4px;
+}
+
+.button :active{
+  background-color: grey;
+}
+
+.button:hover {
+  background-color: rgb(224, 224, 224);
 }

@@ -8,15 +8,15 @@
       <form #formRef = "ngForm">
         <div *ngFor = "let module of state.modules; let in = index">
             <div class="form-group">
-              <input type="button" MatListModule [(ngModel)] = "state.modules[in].value" name="name{{in}}" (click) = "setModule(in)">
+              <input type="button" class="button" MatListModule [(ngModel)] = "state.modules[in].value" [(ngStyle)] = "sideButtonStyles" name="name{{in}}" (click) = "setModule(in)">
             </div>
         </div>    
     </form>
     </mat-nav-list>
     <button class="button" (click)="addNewModule()">
-      addNewModule
+      Добавить модуль
     </button>
-    <button class="button postButton" (click)="postModule()">
+    <button class="postButton" (click)="postModule()">
       Создать отчёт
     </button>
   </mat-sidenav>
@@ -30,8 +30,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <input type="text" [(ngModel)] = "title" name="titleOfReport">
-      
+      <input type="text" [(ngModel)] = "title" name="titleOfReport" class="input">
     </mat-toolbar>
     <ng-container #model></ng-container>
   </mat-sidenav-content>

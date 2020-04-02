@@ -17,7 +17,9 @@ export class ModulesComponent implements AfterViewInit {
   //title of module
   title: string = 'report title';
 
-  
+  //styles of side buttons
+  sideButtonStyles: {};
+
 
   //array of dynamic components
   moduleComponents: Array<ModuleComponent> = [];
@@ -56,7 +58,7 @@ export class ModulesComponent implements AfterViewInit {
   constructor(private breakpointObserver: BreakpointObserver, private componentFactoryResolver: ComponentFactoryResolver, private render: Renderer2, private reportService: ReportTemplateService) {
   }
 
-  
+
   //creating dynamic component
   addNewModule(){
     
@@ -74,7 +76,7 @@ export class ModulesComponent implements AfterViewInit {
     }
     
     //add new module to module list
-    this.state.modules.push({value: 'Module' + this.realSizeModules});
+    this.state.modules.push({value: 'Модуль ' + this.realSizeModules});
 
     //creating dynamic component
     let moduleComponent = this.componentFactoryResolver.resolveComponentFactory( ModuleComponent );
@@ -86,15 +88,11 @@ export class ModulesComponent implements AfterViewInit {
     
     //set title of new module
     (<ModuleComponent>moduleComponentRef.instance).value = {
-      title: 'Module'+this.realSizeModules,
+      title: 'Модуль '+this.realSizeModules,
       order: this.state.currentModule,
     };
-    
-    console.log(this.state.currentModule)
-    console.log('Module added');
-    console.log(this.state.modules);
-    console.log("current module is " + this.state.currentModule);
-    console.log(this.moduleComponents);
+
+
   }
 
   //choosing module from module list
@@ -109,8 +107,7 @@ export class ModulesComponent implements AfterViewInit {
     this.moduleComponents[value].currentStyles = {
       display: 'block',
     }
-    console.log("current module is "+this.state.currentModule);
-    console.log(this.model)
+
   }
 
   //sending report to server
@@ -121,7 +118,7 @@ export class ModulesComponent implements AfterViewInit {
     }
     this.reportService.postReport(this.report.id, this.report.title, this.report.questionnaires, this.report.tables)
 
-    
+
     console.log(this.report.questionnaires)
 
   }
