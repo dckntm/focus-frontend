@@ -11,6 +11,8 @@ export class ModuleComponent implements AfterViewInit {
     order: number,
   }
 
+  types = [{'type': 'number'}, {'type': 'string'}, {'type': 'boolean'}];
+
   CurrentOrder = 0;
 
   questionnaire = {
@@ -24,7 +26,7 @@ export class ModuleComponent implements AfterViewInit {
         questions:[
           { 
             questionText: "1 вопрос",
-            inputType: 1,
+            inputType: this.types[0],
           }
         ]
       }
@@ -48,17 +50,24 @@ export class ModuleComponent implements AfterViewInit {
 
   addNewSection(){
     this.currOrder += 1;
-    this.questionnaire.sections.push({title: 'новая секция', repeatable: false, order: this.currOrder, questions:[{questionText: "new question", inputType: 1}]})
+    this.questionnaire.sections.push({title: 'новая секция', repeatable: false, order: this.currOrder, questions:[{questionText: "new question", inputType: this.types[0]}]})
     
   }
 
   addNewQuestion(index){
-    this.questionnaire.sections[index].questions.push({questionText: "новый вопрос", inputType: 1});
+    this.questionnaire.sections[index].questions.push({questionText: "Новый вопрос", inputType: this.types[0]});
   }
 
   changeRepeatableness(index){
     this.questionnaire.sections[index].repeatable = !this.questionnaire.sections[index].repeatable;
     console.log(this.questionnaire.sections[index].repeatable)
+  }
+
+  
+   selectedType = this.types[0];
+
+   onChange(type) {
+     console.log(this.questionnaire.sections[0].questions[0].inputType)
   }
   
 }
