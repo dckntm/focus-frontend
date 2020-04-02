@@ -1,9 +1,12 @@
-import { Component, ViewChild, ViewContainerRef, ComponentFactoryResolver, OnInit, AfterViewInit, Type, Renderer2} from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, ComponentFactoryResolver, AfterViewInit, Renderer2} from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { ModuleComponent } from '../module/module.component';
-import { ITS_JUST_ANGULAR } from '@angular/core/src/r3_symbols';
+import { ReportTemplateService } from '../../servises/report-template.service';
+import { Report } from 'src/app/models/reporet-template';
+
+
 
 @Component({
   selector: 'app-modules',
@@ -11,8 +14,23 @@ import { ITS_JUST_ANGULAR } from '@angular/core/src/r3_symbols';
   styleUrls: ['./modules.component.scss']
 })
 export class ModulesComponent implements AfterViewInit {
+  //title of module
   title: string = 'report title';
+
+  
+
+  //array of dynamic components
   moduleComponents: Array<ModuleComponent> = [];
+
+  // report template for post to server
+  report = {
+    id: '',
+    title: 'some text',
+    questionnaires:[],
+    tables: [],
+  };
+
+  //current state of page && titles of modules
   state = {
     modules: [],
     currentModule: -1,
@@ -20,8 +38,11 @@ export class ModulesComponent implements AfterViewInit {
   
   realSizeModules = 0;
 
+  //anstraction for dynamic creating components
   @ViewChild('model', {read: ViewContainerRef}) private model: any;
 
+
+  //creating first module component during compilation
   ngAfterViewInit(){
     this.addNewModule();
   }
@@ -32,16 +53,18 @@ export class ModulesComponent implements AfterViewInit {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private componentFactoryResolver: ComponentFactoryResolver, private render: Renderer2) {}
+  constructor(private breakpointObserver: BreakpointObserver, private componentFactoryResolver: ComponentFactoryResolver, private render: Renderer2, private reportService: ReportTemplateService) {
+  }
 
   
-
+  //creating dynamic component
   addNewModule(){
-    console.log(this.model);
     
+    //set number of new module
     this.realSizeModules += 1;
     this.state.currentModule = this.moduleComponents.length;
     
+    //clear others modules 
     if(this.moduleComponents.length > 0){
       for(let i = 0; i <= this.state.currentModule - 1; i++){
         this.moduleComponents[i].currentStyles = {
@@ -50,11 +73,14 @@ export class ModulesComponent implements AfterViewInit {
       }     
     }
     
+    //add new module to module list
     this.state.modules.push({value: 'Module' + this.realSizeModules});
+
+    //creating dynamic component
     let moduleComponent = this.componentFactoryResolver.resolveComponentFactory( ModuleComponent );
     let moduleComponentRef = this.model.createComponent( moduleComponent );
     
-    //push new item to dynamic co
+    //push new item to dynamic components array
     let NewItem = moduleComponentRef.instance;
     this.moduleComponents.push(NewItem);
     
@@ -71,16 +97,33 @@ export class ModulesComponent implements AfterViewInit {
     console.log(this.moduleComponents);
   }
 
+  //choosing module from module list
   setModule(value){
+    //clear current module
     this.moduleComponents[this.state.currentModule].currentStyles = {
       display: 'none',
     }
+
+    //show current module
     this.state.currentModule = value;
     this.moduleComponents[value].currentStyles = {
       display: 'block',
     }
     console.log("current module is "+this.state.currentModule);
     console.log(this.model)
+  }
+
+  //sending report to server
+  postModule(){
+    this.report.title = this.title;
+    for(let i = 0; i < this.moduleComponents.length; i++){
+      this.report.questionnaires.push(this.moduleComponents[i].questionnaire);
+    }
+    this.reportService.postReport(this.report.id, this.report.title, this.report.questionnaires, this.report.tables)
+
+    
+    console.log(this.report.questionnaires)
+
   }
   
 }

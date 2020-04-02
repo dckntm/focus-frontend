@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-module',
   templateUrl: './module.component.html',
   styleUrls: ['./module.component.scss']
 })
-export class ModuleComponent implements OnInit { 
+export class ModuleComponent implements AfterViewInit { 
   value: {
     title: string,
     order: number,
@@ -13,21 +13,26 @@ export class ModuleComponent implements OnInit {
 
   CurrentOrder = 0;
 
-  sections = [
-    {
-      title: '1 секция',
-      order: 1,
-      repeatable: false,
-      questions:[
-        { 
-          questionText: "1 вопрос",
-          inputType: 1,
-        }
-      ]
-    }
-  ]
+  questionnaire = {
+    title: 'название секции',
+    order: 0,
+    sections: [
+      {
+        title: '1 секция',
+        order: 1,
+        repeatable: false,
+        questions:[
+          { 
+            questionText: "1 вопрос",
+            inputType: 1,
+          }
+        ]
+      }
+    ]
+  };
+  
 
-  currOrder: number = this.sections[0].order;
+  currOrder: number = this.questionnaire.sections[0].order;
 
   currentStyles: {};
   
@@ -36,21 +41,23 @@ export class ModuleComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void{
+    this.questionnaire.title = this.value.title;
+    this.questionnaire.order = this.value.order;
   }
 
   addNewSection(){
     this.currOrder += 1;
-    this.sections.push({title: 'новая секция', repeatable: false, order: this.currOrder, questions:[{questionText: "new question", inputType: 1}]})
+    this.questionnaire.sections.push({title: 'новая секция', repeatable: false, order: this.currOrder, questions:[{questionText: "new question", inputType: 1}]})
     
   }
 
   addNewQuestion(index){
-    this.sections[index].questions.push({questionText: "новый вопрос", inputType: 1});
+    this.questionnaire.sections[index].questions.push({questionText: "новый вопрос", inputType: 1});
   }
 
   changeRepeatableness(index){
-    this.sections[index].repeatable = !this.sections[index].repeatable;
+    this.questionnaire.sections[index].repeatable = !this.questionnaire.sections[index].repeatable;
   }
   
 }
