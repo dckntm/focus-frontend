@@ -7,7 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ModuleComponent implements OnInit { 
   value: {
-    title: string;
+    title: string,
+    order: number,
   }
 
   CurrentOrder = 0;

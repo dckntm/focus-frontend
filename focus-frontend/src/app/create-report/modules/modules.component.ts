@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewContainerRef, ComponentFactoryResolver, OnInit, AfterViewInit, Type, Renderer2 } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, ComponentFactoryResolver, OnInit, AfterViewInit, Type, Renderer2} from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -11,6 +11,7 @@ import { ITS_JUST_ANGULAR } from '@angular/core/src/r3_symbols';
   styleUrls: ['./modules.component.scss']
 })
 export class ModulesComponent implements AfterViewInit {
+  title: string = 'report title';
   moduleComponents: Array<ModuleComponent> = [];
   state = {
     modules: [],
@@ -53,18 +54,15 @@ export class ModulesComponent implements AfterViewInit {
     let moduleComponent = this.componentFactoryResolver.resolveComponentFactory( ModuleComponent );
     let moduleComponentRef = this.model.createComponent( moduleComponent );
     
+    //push new item to dynamic co
     let NewItem = moduleComponentRef.instance;
     this.moduleComponents.push(NewItem);
     
     //set title of new module
     (<ModuleComponent>moduleComponentRef.instance).value = {
       title: 'Module'+this.realSizeModules,
+      order: this.state.currentModule,
     };
-
-    //set style of new module
-    // (<ModuleComponent>moduleComponentRef.instance).currentStyles = {
-    //   display: 'none'
-    // }
     
     console.log(this.state.currentModule)
     console.log('Module added');
