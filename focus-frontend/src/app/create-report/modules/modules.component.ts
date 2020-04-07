@@ -119,7 +119,7 @@ export class ModulesComponent implements AfterViewInit {
     this.reportService.postReport(this.report.id, this.report.title, this.report.questionnaires, this.report.tables)
 
 
-    console.log(this.report.questionnaires)
+    console.log(JSON.stringify(this.report))
 
   }
   

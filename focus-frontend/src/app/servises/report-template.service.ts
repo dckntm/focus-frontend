@@ -20,7 +20,7 @@ export class ReportTemplateService {
 
   postReport(id: string, title: string, questionnaires: object[], tables: any[]){
     return this.http
-      .post<Report>("http://localhost:5000/api/report/template", {
+      .post("http://localhost:5000/api/report/template", {
           id,
           title,
           questionnaires,
