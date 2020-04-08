@@ -9,6 +9,8 @@ export class CreateTimetableComponent implements OnInit {
 
   constructor() { }
 
+  templates = [{'type': '1 organisation'}, {'type': '2 organisation'}, {'type': '3 organisation'}];
+
   ngOnInit(): void {
   }
 

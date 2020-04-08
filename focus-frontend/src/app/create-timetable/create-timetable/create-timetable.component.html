@@ -1,1 +1,8 @@
-<p>create-timetable works!</p>
+
+<div class="container">
+    <p>Выберите шаблон расписания.</p> 
+    <select [(ngModel)] = "templates" name="select">
+        <option *ngFor = "let t of templates" [ngValue] = "t">{{t.type}}</option>
+    </select>
+    
+</div>
