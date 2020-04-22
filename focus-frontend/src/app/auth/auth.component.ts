@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../servises/authentication.service';
 import { first } from 'rxjs/operators';
 
+
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -17,7 +18,7 @@ export class AuthComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private authService: AuthenticationService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.loginForm = this.formBuilder.group({
       username: ["", Validators.required],
       password: ["", Validators.required]
@@ -50,6 +51,7 @@ export class AuthComponent implements OnInit {
           this.error = error;
         }
       );
+
   }
 
 }
