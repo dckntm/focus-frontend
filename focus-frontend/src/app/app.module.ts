@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { CreateTimetableComponent } from './create-timetable/create-timetable/create-timetable.component';
+import { AuthComponent } from './auth/auth.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { CreateTimetableComponent } from './create-timetable/create-timetable/cr
     ModuleComponent,
     ModulesComponent,
     CreateTimetableComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
