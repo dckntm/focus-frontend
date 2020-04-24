@@ -1,0 +1,37 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Модули</mat-toolbar>
+    <mat-nav-list>
+      <form #formRef = "ngForm">
+        <div *ngFor = "let module of state.modules; let in = index">
+            <div class="form-group">
+              <input type="button" class="button" MatListModule [(ngModel)] = "state.modules[in].value" [(ngStyle)] = "sideButtonStyles" name="name{{in}}" (click) = "setModule(in)">
+            </div>
+        </div>    
+    </form>
+    </mat-nav-list>
+    <button class="button" (click)="addNewModule()">
+      Добавить модуль
+    </button>
+    <button class="postButton" (click)="postModule()">
+      Создать отчёт
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <input type="text" [(ngModel)] = "title" name="titleOfReport" class="input">
+    </mat-toolbar>
+    <ng-container #model></ng-container>
+  </mat-sidenav-content>
+</mat-sidenav-container>

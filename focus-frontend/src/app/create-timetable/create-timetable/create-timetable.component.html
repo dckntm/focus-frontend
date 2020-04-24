@@ -1,0 +1,24 @@
+
+<div class="container">
+    <p>Выберите шаблон расписания.</p> 
+    <select [(ngModel)] = "templates" name="select">
+        <option *ngFor = "let t of templates" [ngValue] = "t">{{t.type}}</option>
+    </select>
+    <p>регулярность <label class="switch">
+        <input type="checkbox" >
+        <span class="slider round"></span>
+    </label></p>
+    <div>
+        <p>Дедлайн  <input type="number">  дней.</p>
+        <p>Периодичность <input type="number"> дней.</p>
+        <p>Период: начало <input type="date"></p>
+        <p>конец <input type="date"></p>
+    </div>
+    <div class="organisationsList">
+        <p>организации</p>
+        
+
+    </div>
+    
+    
+</div>

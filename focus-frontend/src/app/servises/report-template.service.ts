@@ -1,0 +1,42 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable, throwError } from "rxjs";
+import { catchError, retry } from "rxjs/operators";
+import { Report } from "../models/reporet-template";
+
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ReportTemplateService {
+  httpOptions = {
+    headers: new HttpHeaders({
+      "Content-Type": "application/json; charset=utf-8"
+    })
+  };
+
+  constructor(private http: HttpClient) {}
+
+  postReport(report: object){
+    return this.http
+      .post<string>("http://localhost:5000/api/report/template", {
+          report
+      })
+      .pipe(catchError(this.errorHandler))
+      .subscribe(x => console.log(x));
+  }
+
+  errorHandler(error) {
+    let errorMessage = "You are dumbhead and have an error";
+    if (error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Get server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(errorMessage);
+  }
+}

@@ -1,0 +1,33 @@
+<div class="container" [ngStyle]="currentStyles">
+    <h1>{{value?.title}}</h1>
+    <form #formRef = "ngForm">
+        <div *ngFor = "let section of questionnaire.sections; let in = index">
+            <div class="form-group">
+                <input type="text" [(ngModel)] = "questionnaire.sections[in].title" class="input" name="name1{{in}}" #name1 = "ngModel" required>
+                <label class="switch">
+                    <input type="checkbox" (click) = "changeRepeatableness(in)">
+                    <span class="slider round"></span>
+                </label>
+                
+                
+  
+                <div *ngFor = "let question of questionnaire.sections[in].questions; let ind = index">
+  
+                    <input type="text" [(ngModel)] = "questionnaire.sections[in].questions[ind].questionText" class="input qInput" name="name2{{ind}}">
+                    <select [(ngModel)] = "questionnaire.sections[in].questions[ind].inputType" name="select" (ngModelChange) = "onChange($event)">
+                        <option *ngFor = "let t of types" [ngValue] = "t">{{t.type}}</option>
+                    </select>
+                    
+                </div>
+                <input type="button" (click)="addNewQuestion(in)" value="Добавить вопрос" class="button">
+                
+            </div>
+            
+            
+        </div>
+        <button [disabled]="!formRef.form.valid" (click)="addNewSection()" class="button">Добавить секцию</button>
+        
+    </form>
+    
+</div>
+
