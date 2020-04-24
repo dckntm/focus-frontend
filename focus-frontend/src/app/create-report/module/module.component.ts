@@ -11,7 +11,7 @@ export class ModuleComponent implements AfterViewInit {
     order: number,
   }
 
-  types = [{'type': 'number'}, {'type': 'string'}, {'type': 'boolean'}];
+  types = [1];
 
   CurrentOrder = 0;
 

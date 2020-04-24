@@ -18,15 +18,13 @@ export class ReportTemplateService {
 
   constructor(private http: HttpClient) {}
 
-  postReport(id: string, title: string, questionnaires: object[], tables: any[]){
+  postReport(report: object){
     return this.http
-      .post("http://localhost:5000/api/report/template", {
-          id,
-          title,
-          questionnaires,
-          tables,
+      .post<string>("http://localhost:5000/api/report/template", {
+          report
       })
-      .pipe(catchError(this.errorHandler));
+      .pipe(catchError(this.errorHandler))
+      .subscribe(x => console.log(x));
   }
 
   errorHandler(error) {

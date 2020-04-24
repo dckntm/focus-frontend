@@ -17,8 +17,9 @@
                     <select [(ngModel)] = "questionnaire.sections[in].questions[ind].inputType" name="select" (ngModelChange) = "onChange($event)">
                         <option *ngFor = "let t of types" [ngValue] = "t">{{t.type}}</option>
                     </select>
-                    <input type="button" (click)="addNewQuestion(in)" value="Добавить вопрос" class="button">
+                    
                 </div>
+                <input type="button" (click)="addNewQuestion(in)" value="Добавить вопрос" class="button">
                 
             </div>
             
