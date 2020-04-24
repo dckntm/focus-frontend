@@ -16,6 +16,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { CreateTimetableComponent } from './create-timetable/create-timetable/create-timetable.component';
 import { AuthComponent } from './auth/auth.component';
+import { ReportListPageComponent } from './report-list/report-list-page/report-list-page.component';
+import { ReportListListComponent } from './report-list/report-list-list/report-list-list.component';
+import { ReportListHeaderComponent } from './report-list/report-list-header/report-list-header.component';
 
 
 @NgModule({
@@ -25,6 +28,9 @@ import { AuthComponent } from './auth/auth.component';
     ModulesComponent,
     CreateTimetableComponent,
     AuthComponent,
+    ReportListPageComponent,
+    ReportListListComponent,
+    ReportListHeaderComponent,
   ],
   imports: [
     BrowserModule,
