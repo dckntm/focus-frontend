@@ -4,9 +4,9 @@
         <button class="push">Добавить новую организацию</button>
     </div>
     <hr>
-    <div class="organisation-list">
-        <ul class="border">
-            <li>Элемент списка</li>
+    <div class="organisation-list" *ngIf="SimpleOrganizations$ | async as SimpleOrganizations">
+        <ul *ngFor="let SimpleOrganization of SimpleOrganizations" class="border">
+            <li>{{SimpleOrganizations.title}}</li>
         </ul>
     </div>
 </div>
