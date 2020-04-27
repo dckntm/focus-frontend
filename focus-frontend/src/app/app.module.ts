@@ -16,6 +16,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { CreateTimetableComponent } from './create-timetable/create-timetable/create-timetable.component';
 import { AuthComponent } from './auth/auth.component';
+import { TimetableListPageComponent } from './timetable-list/timetable-list-page/timetable-list-page.component';
+import { TimetableListHeaderComponent } from './timetable-list/timetable-list-header/timetable-list-header.component';
+import { TimetableListListComponent } from './timetable-list/timetable-list-list/timetable-list-list.component';
 
 
 @NgModule({
@@ -25,6 +28,9 @@ import { AuthComponent } from './auth/auth.component';
     ModulesComponent,
     CreateTimetableComponent,
     AuthComponent,
+    TimetableListPageComponent,
+    TimetableListHeaderComponent,
+    TimetableListListComponent,
   ],
   imports: [
     BrowserModule,
