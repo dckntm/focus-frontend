@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { SimpleTimetable } from 'src/app/models/simple-timetable';
+import { ActivatedRoute } from '@angular/router';
+import { TimetableListService } from 'src/app/servises/timetable-list.service';
 
 @Component({
   selector: 'app-timetable-list-list',
@@ -6,10 +10,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./timetable-list-list.component.scss']
 })
 export class TimetableListListComponent implements OnInit {
+  SimpleTimetables$: Observable<SimpleTimetable[]>
 
-  constructor() { }
+
+  constructor(private pageService: TimetableListService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.loadTimetables();
+
+    this.SimpleTimetables$.subscribe(x => console.log(x));
   }
 
+
+  loadTimetables(){
+    this.SimpleTimetables$ = this.pageService.getOrganisations();
+  }
 }
