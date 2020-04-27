@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="head">
+        <p>Организации</p>
+        <button class="push">Добавить новую организацию</button>
+    </div>
+    <hr>
+    <div class="organisation-list" *ngIf="SimpleOrganizations$ | async as SimpleOrganizations">
+        <ul *ngFor="let SimpleOrganization of SimpleOrganizations" class="border">
+            <li>{{SimpleOrganizations.title}}</li>
+        </ul>
+    </div>
+</div>

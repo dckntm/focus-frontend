@@ -5,12 +5,14 @@ import { ModuleComponent } from '../app/create-report/module/module.component';
 import { CreateTimetableComponent } from '../app/create-timetable/create-timetable/create-timetable.component'
 import { AuthComponent } from '../app/auth/auth.component'
 import { TimetableListPageComponent } from './timetable-list/timetable-list-page/timetable-list-page.component';
+import { OrganisationsListPageComponent } from '../app/organizations-list/organisations-list-page/organisations-list-page.component'
 
 const routes: Routes = [
   {path: '', component: ModulesComponent},
   {path: 'timetable', component: CreateTimetableComponent},
   {path: 'auth', component: AuthComponent},
-  {path: 'timetable-list', component: TimetableListPageComponent}
+  {path: 'timetable-list', component: TimetableListPageComponent},
+  {path: 'organizations', component: OrganisationsListPageComponent}
 ];
 
 @NgModule({

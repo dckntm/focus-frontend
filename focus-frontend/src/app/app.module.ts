@@ -19,6 +19,9 @@ import { AuthComponent } from './auth/auth.component';
 import { TimetableListPageComponent } from './timetable-list/timetable-list-page/timetable-list-page.component';
 import { TimetableListHeaderComponent } from './timetable-list/timetable-list-header/timetable-list-header.component';
 import { TimetableListListComponent } from './timetable-list/timetable-list-list/timetable-list-list.component';
+import { OrganisationsListPageComponent } from './organizations-list/organisations-list-page/organisations-list-page.component';
+import { OrganisationsListHeaderComponent } from './organizations-list/organisations-list-header/organisations-list-header.component';
+import { OrganisationsListListComponent } from './organizations-list/organisations-list-list/organisations-list-list.component';
 
 
 @NgModule({
@@ -31,6 +34,9 @@ import { TimetableListListComponent } from './timetable-list/timetable-list-list
     TimetableListPageComponent,
     TimetableListHeaderComponent,
     TimetableListListComponent,
+    OrganisationsListPageComponent,
+    OrganisationsListHeaderComponent,
+    OrganisationsListListComponent,
   ],
   imports: [
     BrowserModule,
