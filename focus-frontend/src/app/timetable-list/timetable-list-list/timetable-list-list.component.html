@@ -4,9 +4,9 @@
         <button class="push">Добавить новое расписание</button>
     </div>
     <hr>
-    <div class="organisation-list">
-        <ul class="border">
-            <li>Элемент списка</li>
+    <div class="organisation-list" *ngIf="SimpleTimetables$ | async as SimpleTimetables">
+        <ul class="border" *ngFor="let SimpleTimetable of SimpleTimetables">
+            <li>{{SimpleTimetables.title}}</li>
         </ul>
     </div>
 </div>
