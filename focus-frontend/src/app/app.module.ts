@@ -22,6 +22,8 @@ import { TimetableListListComponent } from './timetable-list/timetable-list-list
 import { OrganisationsListPageComponent } from './organizations-list/organisations-list-page/organisations-list-page.component';
 import { OrganisationsListHeaderComponent } from './organizations-list/organisations-list-header/organisations-list-header.component';
 import { OrganisationsListListComponent } from './organizations-list/organisations-list-list/organisations-list-list.component';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { CreateOrgComponent } from './create-org/create-org.component';
 
 
 @NgModule({
@@ -37,6 +39,8 @@ import { OrganisationsListListComponent } from './organizations-list/organisatio
     OrganisationsListPageComponent,
     OrganisationsListHeaderComponent,
     OrganisationsListListComponent,
+    CreateUserComponent,
+    CreateOrgComponent,
   ],
   imports: [
     BrowserModule,
