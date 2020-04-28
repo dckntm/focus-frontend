@@ -29,6 +29,16 @@ export class OrgSettingsService {
     .pipe(retry(1), catchError(this.errorHandler));
   }
 
+  saveInfo(title: string, adress: string, number: number){
+    return this.http
+    .post<string>("http//localhost5000/api/organiation/change", {
+      title,
+      adress,
+      number
+    })
+    .pipe(catchError(this.errorHandler))
+  }
+
   errorHandler(error) {
     let errorMessage = "You are dumbhead and have error";
     if (error.error instanceof ErrorEvent) {
