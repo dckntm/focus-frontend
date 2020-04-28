@@ -1,0 +1,23 @@
+.button{
+    position: fixed;
+    bottom: 0;
+    width: 50%;
+    display: inline-block;
+    color: black;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
+    padding: .5em 2em;
+    outline: none;
+    border: 2px solid;
+    border-radius: 1px;
+    transition: 0.2s;
+    height: 5vh;
+}
+
+.button:hover{
+    background: rgba(255,255,255,.2);
+}
+.button:active{
+    background: white; 
+}

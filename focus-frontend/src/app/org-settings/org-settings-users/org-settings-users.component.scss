@@ -1,0 +1,43 @@
+.border{
+
+    list-style: none;
+    padding: 0;
+}
+.border li{
+    width: 60%;
+    font-family: "Trebuchet MS", "Lucida Sans";
+    padding: 7px 20px;
+    margin-bottom:10px;
+    border-radius: 5px;
+    box-shadow: 2px -2px 5px 0 rgba(0,0,0,.1),
+     -2px -2px 5px 0 rgba(0,0,0,.1),
+     2px 2px 5px 0 rgba(0,0,0,.1),
+     -2px 2px 5px 0 rgba(0,0,0,.1);
+     font-size: 20px;
+     letter-spacing: 2px;
+     transition: 0.3s all linear;
+} 
+
+.button{
+    position: fixed;
+    bottom: 0;
+    width: 50%;
+    display: inline-block;
+    color: black;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
+    padding: .5em 2em;
+    outline: none;
+    border: 2px solid;
+    border-radius: 1px;
+    transition: 0.2s;
+    height: 5vh;
+}
+
+.button:hover{
+    background: rgba(255,255,255,.2);
+}
+.button:active{
+    background: white; 
+}
