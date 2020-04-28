@@ -15,11 +15,11 @@ export class CreateUserService {
 
   constructor(private http: HttpClient) { }
 
-  postUser(id: string, name: string, username:string, password: string){
+  postUser(name: string, email: string, username:string, password: string){
     return this.http
     .post<string>("http://localhost5000/api/new/user",{
-      id,
       name,
+      email,
       username,
       password
     })
