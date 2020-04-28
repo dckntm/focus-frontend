@@ -1,22 +1,22 @@
 <div class="container">
-    <form>
+    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             Создайте нового пользователя
         </div>
-        <div class="form-group">
+        <div class="form-group" formControlName="name">
             <input type="text" placeholder="Фамилия, Имя, Отчество">
         </div>
-        <div class="form-group">
+        <div class="form-group" formControlName="email">
             <input type="text" placeholder="Электронная почта">
         </div>
-        <div class="form-group">
+        <div class="form-group" formControlName="username">
             <input type="text" placeholder="Логин">
         </div>
-        <div class="form-group">
+        <div class="form-group" formControlName="password">
             <input type="text" placeholder="Пароль">
         </div>
         <div class="form-group">
-            <button>Создать</button>
+            <button type="submit button">Создать</button>
         </div>
     </form>
 </div>

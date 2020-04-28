@@ -1,19 +1,19 @@
 <div class="container">
-    <form>
+    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             Создайте новую организацию
         </div>
-        <div class="form-group">
+        <div class="form-group" formControlName="title">
             <input type="text" placeholder="Название организации">
         </div>
-        <div class="form-group">
+        <div class="form-group" formControlName="adress">
             <input type="text" placeholder="Адрес организации">
         </div>
-        <div class="form-group">
+        <div class="form-group" formControlName="number">
             <input type="text" placeholder="Номер телефона организации">
         </div>
         <div class="form-group">
-            <button>Создать</button>
+            <button type="submit button">Создать</button>
         </div>
     </form>
 </div>
