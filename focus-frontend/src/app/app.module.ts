@@ -24,6 +24,10 @@ import { OrganisationsListHeaderComponent } from './organizations-list/organisat
 import { OrganisationsListListComponent } from './organizations-list/organisations-list-list/organisations-list-list.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateOrgComponent } from './create-org/create-org.component';
+import { OrgSettingsPageComponent } from './org-settings/org-settings-page/org-settings-page.component';
+import { OrgSettingsHeaderComponent } from './org-settings/org-settings-header/org-settings-header.component';
+import { OrgSettingsInfoComponent } from './org-settings/org-settings-info/org-settings-info.component';
+import { OrgSettingsUsersComponent } from './org-settings/org-settings-users/org-settings-users.component';
 
 
 @NgModule({
@@ -41,6 +45,10 @@ import { CreateOrgComponent } from './create-org/create-org.component';
     OrganisationsListListComponent,
     CreateUserComponent,
     CreateOrgComponent,
+    OrgSettingsPageComponent,
+    OrgSettingsHeaderComponent,
+    OrgSettingsInfoComponent,
+    OrgSettingsUsersComponent,
   ],
   imports: [
     BrowserModule,
