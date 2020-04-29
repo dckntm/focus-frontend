@@ -1,7 +1,7 @@
 <div class="container">
-    <div class="organisation-list" >
-        <ul class="border">
-            <li>элемент</li>
+    <div class="organisation-list" *ngIf="users$ | async as users" >
+        <ul class="border" *ngFor="let user of users">
+            <li>{{user.name}}</li>
         </ul>
     </div>
     <button class="button">Добавить нового пользователя</button>

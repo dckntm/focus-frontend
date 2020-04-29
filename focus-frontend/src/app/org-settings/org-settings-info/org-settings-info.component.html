@@ -1,12 +1,12 @@
-<form>
-    <div>
-        <p>Название организации <input type="text" class="form-group"></p>
+<form  *ngIf="Organization$ | async as Organization" [formGroup]="infoForm" (ngSubmit)="onSubmit()">
+    <div formControlName="title">
+        <p>Название организации <input type="text" class="form-group" value="{{Organization.title}}"></p>
     </div>
-    <div>
-        <p>Адрес организации <input type="text" class="form-group"></p>
+    <div formControlName="adress">
+        <p>Адрес организации <input type="text" class="form-group" value="{{Organization.adress}}"></p>
     </div>
-    <div>
-        <p>номер организации <input type="text" class="form-group"></p>
+    <div formControlName="number">
+        <p>номер организации <input type="text" class="form-group" value="{{Organization.number}}"></p>
     </div>
     <button class="button" type="submit button">Сохранить</button>
 </form>
