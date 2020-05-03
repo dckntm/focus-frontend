@@ -12,7 +12,6 @@ export class CreateTimetableComponent implements OnInit {
 
   timetable = {
     template: '',
-    repeatable: false,
     deadline: '',
   }
 

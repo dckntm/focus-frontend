@@ -22,7 +22,6 @@ export class ModuleComponent implements AfterViewInit {
       {
         title: '1 секция',
         order: 1,
-        repeatable: false,
         questions:[
           { 
             questionText: "1 вопрос",
@@ -50,7 +49,7 @@ export class ModuleComponent implements AfterViewInit {
 
   addNewSection(){
     this.currOrder += 1;
-    this.questionnaire.sections.push({title: 'новая секция', repeatable: false, order: this.currOrder, questions:[{questionText: "new question", inputType: this.types[0]}]})
+    this.questionnaire.sections.push({title: 'новая секция', order: this.currOrder, questions:[{questionText: "new question", inputType: this.types[0]}]})
     
   }
 
@@ -58,10 +57,7 @@ export class ModuleComponent implements AfterViewInit {
     this.questionnaire.sections[index].questions.push({questionText: "Новый вопрос", inputType: this.types[0]});
   }
 
-  changeRepeatableness(index){
-    this.questionnaire.sections[index].repeatable = !this.questionnaire.sections[index].repeatable;
-    console.log(this.questionnaire.sections[index].repeatable)
-  }
+  
 
   
    selectedType = this.types[0];

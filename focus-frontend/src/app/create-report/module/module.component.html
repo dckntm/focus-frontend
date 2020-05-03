@@ -4,10 +4,6 @@
         <div *ngFor = "let section of questionnaire.sections; let in = index">
             <div class="form-group">
                 <input type="text" [(ngModel)] = "questionnaire.sections[in].title" class="input" name="name1{{in}}" #name1 = "ngModel" required>
-                <label class="switch">
-                    <input type="checkbox" (click) = "changeRepeatableness(in)">
-                    <span class="slider round"></span>
-                </label>
                 
                 
   
