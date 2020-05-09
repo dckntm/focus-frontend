@@ -31,11 +31,9 @@ export class CreateOrgComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.createForm.invalid) {
-      return;
-    }
+    
 
-    console.log(this.form.title, this.form.adress, this.form.number);
+    console.log(this.form.title, this.form.address, this.form.number);
 
     this.pageService
       .postOrg(this.form.id.value, this.form.title.value, this.form.address.value, this.form.number.value, this.form.isHead.value)
