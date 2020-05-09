@@ -18,7 +18,7 @@ export class OrganisationsListService {
 
   getOrganisations(): Observable<SimpleOrganization[]>{
     return this.http
-    .get<SimpleOrganization[]>("http//localhost5000/api/identity/info", this.httpOptions)
+    .get<SimpleOrganization[]>("http://localhost:5200/api/org/info", this.httpOptions)
     .pipe(retry(1), catchError(this.errorHandler));
   }
 
