@@ -48,6 +48,7 @@ export class ModuleComponent implements AfterViewInit {
           { 
             questionText: "1 вопрос",
             inputType: Types,
+            order: 0,
           }
         ]
       }
@@ -71,15 +72,14 @@ export class ModuleComponent implements AfterViewInit {
 
   addNewSection(){
     this.currOrder += 1;
-    this.questionnaire.sections.push({title: 'новая секция', order: this.currOrder, questions:[{questionText: "new question", inputType: this.types}]})
+    this.questionnaire.sections.push({title: 'новая секция', order: this.currOrder, questions:[{questionText: "new question", inputType: this.types, order: 0}]})
     
   }
 
   addNewQuestion(index){
-    this.questionnaire.sections[index].questions.push({questionText: "Новый вопрос", inputType: this.types});
+    questOrder: 0;
+    this.questionnaire.sections[index].questions.push({questionText: "Новый вопрос", inputType: this.types, order: this.questionnaire.sections[index].questions.length});
   }
-  
-  selectedType = 0;
 
   onChange(type) {
     console.log(this.questionnaire.sections[0].questions[0].inputType)
