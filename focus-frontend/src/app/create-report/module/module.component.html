@@ -11,7 +11,7 @@
   
                     <input type="text" [(ngModel)] = "questionnaire.sections[in].questions[ind].questionText" class="input qInput" name="name2{{ind}}">
                     <select [(ngModel)] = "questionnaire.sections[in].questions[ind].inputType" name="select" (ngModelChange) = "onChange($event)">
-                        <option *ngFor = "let t of types" [ngValue] = "t">{{t.type}}</option>
+                        <option *ngFor = "let type of keys(types)" [ngValue] = "type">{{types[type]}}</option>
                     </select>
                     
                 </div>

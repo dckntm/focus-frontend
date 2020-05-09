@@ -1,17 +1,39 @@
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 
+export enum Types {
+  ShortText = 0,
+  LongText,
+  Email,
+  PhoneNumber,
+  Label, // forbidden
+  Integer,
+  Decimal,
+  Financial,
+  MultipleChoiceOptionList, // forbidden
+  SingleOptionSelect, // forbidden 
+  Boolean
+}
+
 @Component({
   selector: 'app-module',
   templateUrl: './module.component.html',
   styleUrls: ['./module.component.scss']
 })
+
+
+
 export class ModuleComponent implements AfterViewInit { 
   value: {
     title: string,
     order: number,
   }
 
-  types = [1];
+  keys = Object.keys;
+  types = Types;
+
+  
+
+  
 
   CurrentOrder = 0;
 
@@ -25,7 +47,7 @@ export class ModuleComponent implements AfterViewInit {
         questions:[
           { 
             questionText: "1 вопрос",
-            inputType: this.types[0],
+            inputType: Types,
           }
         ]
       }
@@ -49,21 +71,18 @@ export class ModuleComponent implements AfterViewInit {
 
   addNewSection(){
     this.currOrder += 1;
-    this.questionnaire.sections.push({title: 'новая секция', order: this.currOrder, questions:[{questionText: "new question", inputType: this.types[0]}]})
+    this.questionnaire.sections.push({title: 'новая секция', order: this.currOrder, questions:[{questionText: "new question", inputType: this.types}]})
     
   }
 
   addNewQuestion(index){
-    this.questionnaire.sections[index].questions.push({questionText: "Новый вопрос", inputType: this.types[0]});
+    this.questionnaire.sections[index].questions.push({questionText: "Новый вопрос", inputType: this.types});
   }
-
   
+  selectedType = 0;
 
-  
-   selectedType = this.types[0];
-
-   onChange(type) {
-     console.log(this.questionnaire.sections[0].questions[0].inputType)
+  onChange(type) {
+    console.log(this.questionnaire.sections[0].questions[0].inputType)
   }
   
 }
