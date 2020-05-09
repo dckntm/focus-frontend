@@ -18,11 +18,11 @@ export class CreateOrgComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm = this.formBuilder.group({
-      id: ["", Validators.required],
-      title: ["", Validators.required],
-      address: ["", Validators.required],
-      number: ["", Validators.required],
-      isHead: [false, Validators.required]
+      id: "",
+      title: "",
+      address: "",
+      number: "",
+      isHead: false,
     });
   }
 
