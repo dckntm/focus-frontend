@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, throwError } from 'rxjs';
+import { BehaviorSubject, throwError, Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
+import { catchError, retry } from 'rxjs/operators';
+import { SimpleOrganization } from '../models/simple-organisation';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,12 @@ export class CreateUserService {
       userRole,
     })
     .pipe(catchError(this.errorHandler));
+  }
+
+  getOrganizations(): Observable<SimpleOrganization[]>{
+    return this.http
+    .get<SimpleOrganization[]>("http://localhost:5200/api/identity/info", this.httpOptions)
+    .pipe(retry(1), catchError(this.errorHandler));
   }
 
   errorHandler(error) {

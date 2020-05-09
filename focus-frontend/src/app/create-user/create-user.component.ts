@@ -3,6 +3,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CreateUserService } from '../servises/create-user.service';
 import { first } from 'rxjs/operators';
+import { SimpleOrganization } from '../models/simple-organisation';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-create-user',
@@ -17,7 +20,14 @@ export class CreateUserComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private pageService: CreateUserService) { }
 
+  organizations$: Observable<SimpleOrganization[]>;
+
+  loadOrganizations(){
+    this.organizations$ = this.pageService.getOrganizations();
+  }
+
   ngOnInit(): void {
+    this.loadOrganizations();
     this.createForm = this.formBuilder.group({
       name: ["", Validators.required],
       surname: ["", Validators.required],
@@ -26,6 +36,12 @@ export class CreateUserComponent implements OnInit {
       userRole: ["", Validators.required]
     });
   }
+
+  onChange(type) {
+    console.log(this.form.organizationId)
+  }
+
+  
 
   get form(){
     return this.createForm.controls;
@@ -36,7 +52,7 @@ export class CreateUserComponent implements OnInit {
       return;
     }
 
-    console.log(this.form.name, this.form.email, this.form.username, this.form.password);
+    console.log(this.form.name.value, this.form.surname.value, this.form.patronymic.value, this.form.organizationId.value, this.form.userRole.value);
 
     this.pageService
       .postUser(this.form.name.value, this.form.surname.value, this.form.patronymic.value, this.form.organizationId.value, this.form.userRole.value)
