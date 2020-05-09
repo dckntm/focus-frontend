@@ -116,7 +116,7 @@ export class ModulesComponent implements AfterViewInit {
     for(let i = 0; i < this.moduleComponents.length; i++){
       this.report.questionnaires.push(this.moduleComponents[i].questionnaire);
     }
-    // this.reportService.postReport(this.report)
+    this.reportService.postReport(this.report)
 
 
     console.log(JSON.stringify(this.report))
