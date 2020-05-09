@@ -20,9 +20,7 @@ export class ReportTemplateService {
 
   postReport(report: object){
     return this.http
-      .post<string>("http://localhost:5000/api/report/template", {
-          report
-      })
+      .post<string>("http://localhost:5000/api/report/template", report)
       .pipe(catchError(this.errorHandler))
       .subscribe(x => console.log(x));
   }
