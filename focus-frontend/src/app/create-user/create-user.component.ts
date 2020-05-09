@@ -20,9 +20,9 @@ export class CreateUserComponent implements OnInit {
   ngOnInit(): void {
     this.createForm = this.formBuilder.group({
       name: ["", Validators.required],
-      email: ["", Validators.required],
-      username: ["", Validators.required],
-      password: ["", Validators.required],
+      surname: ["", Validators.required],
+      patronymic: ["", Validators.required],
+      organizationId: ["", Validators.required],
       userRole: ["", Validators.required]
     });
   }
@@ -39,7 +39,7 @@ export class CreateUserComponent implements OnInit {
     console.log(this.form.name, this.form.email, this.form.username, this.form.password);
 
     this.pageService
-      .postUser(this.form.name.value, this.form.email.value, this.form.username.value, this.form.password.value, this.form.userRole.value)
+      .postUser(this.form.name.value, this.form.surname.value, this.form.patronymic.value, this.form.organizationId.value, this.form.userRole.value)
       .pipe(first())
   }
 

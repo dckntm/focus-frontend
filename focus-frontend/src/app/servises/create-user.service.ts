@@ -15,13 +15,13 @@ export class CreateUserService {
 
   constructor(private http: HttpClient) { }
 
-  postUser(name: string, email: string, username:string, password: string, userRole: string){
+  postUser(name: string, surname: string, patronymic:string, organizationId: string, userRole: string){
     return this.http
     .post<string>("http://localhost:5200/api/identity/create",{
       name,
-      email,
-      username,
-      password,
+      surname,
+      patronymic,
+      organizationId,
       userRole,
     })
     .pipe(catchError(this.errorHandler));
