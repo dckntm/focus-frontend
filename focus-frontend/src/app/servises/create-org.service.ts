@@ -17,7 +17,7 @@ export class CreateOrgService {
 
   postOrg(id: string, title: string, adress: string, number: number, isHead: boolean){
     return this.http
-    .post<string>("http://localhost5000/api/org/create",{
+    .post<string>("http://localhost:5200/api/org/create",{
       id,
       title,
       adress,

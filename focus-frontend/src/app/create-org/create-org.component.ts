@@ -20,9 +20,9 @@ export class CreateOrgComponent implements OnInit {
     this.createForm = this.formBuilder.group({
       id: ["", Validators.required],
       title: ["", Validators.required],
-      adress: ["", Validators.required],
+      address: ["", Validators.required],
       number: ["", Validators.required],
-      isHead: [Validators.required]
+      isHead: [false, Validators.required]
     });
   }
 
@@ -38,7 +38,7 @@ export class CreateOrgComponent implements OnInit {
     console.log(this.form.title, this.form.adress, this.form.number);
 
     this.pageService
-      .postOrg(this.form.id.value, this.form.title.value, this.form.adress.value, this.form.number.value, this.form.isHead.value)
+      .postOrg(this.form.id.value, this.form.title.value, this.form.address.value, this.form.number.value, this.form.isHead.value)
       .pipe(first())
   }
 
