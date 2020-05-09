@@ -22,7 +22,8 @@ export class CreateUserComponent implements OnInit {
       name: ["", Validators.required],
       email: ["", Validators.required],
       username: ["", Validators.required],
-      password: ["", Validators.required]
+      password: ["", Validators.required],
+      userRole: ["", Validators.required]
     });
   }
 
@@ -38,7 +39,7 @@ export class CreateUserComponent implements OnInit {
     console.log(this.form.name, this.form.email, this.form.username, this.form.password);
 
     this.pageService
-      .postUser(this.form.name.value, this.form.email.value, this.form.username.value, this.form.password.value)
+      .postUser(this.form.name.value, this.form.email.value, this.form.username.value, this.form.password.value, this.form.userRole.value)
       .pipe(first())
   }
 
