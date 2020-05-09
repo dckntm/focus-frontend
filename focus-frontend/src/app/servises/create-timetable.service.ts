@@ -24,7 +24,7 @@ export class CreateTimetableService {
 
   getOrganisations(){
     return this.http
-    .get<string[]>("http://localhost5000/api/get/organisations", this.httpOptions)
+    .get<string[]>("http://localhost5000/api/identity/info", this.httpOptions)
     .pipe(catchError(this.errorHandler));
   }
 

@@ -18,9 +18,11 @@ export class CreateOrgComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm = this.formBuilder.group({
+      id: ["", Validators.required],
       title: ["", Validators.required],
       adress: ["", Validators.required],
-      number: ["", Validators.required]
+      number: ["", Validators.required],
+      isHead: [Validators.required]
     });
   }
 
@@ -36,7 +38,7 @@ export class CreateOrgComponent implements OnInit {
     console.log(this.form.title, this.form.adress, this.form.number);
 
     this.pageService
-      .postOrg(this.form.title.value, this.form.adress.value, this.form.number.value)
+      .postOrg(this.form.id.value, this.form.title.value, this.form.adress.value, this.form.number.value, this.form.isHead.value)
       .pipe(first())
   }
 
