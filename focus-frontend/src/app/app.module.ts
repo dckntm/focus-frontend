@@ -24,6 +24,8 @@ import { OrganisationsListHeaderComponent } from './organizations-list/organisat
 import { OrganisationsListListComponent } from './organizations-list/organisations-list-list/organisations-list-list.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateOrgComponent } from './create-org/create-org.component';
+import { ReportModuleComponent } from './report/report-module/report-module.component';
+import { ReportPageComponent } from './report/report-page/report-page.component';
 
 
 @NgModule({
@@ -41,6 +43,8 @@ import { CreateOrgComponent } from './create-org/create-org.component';
     OrganisationsListListComponent,
     CreateUserComponent,
     CreateOrgComponent,
+    ReportModuleComponent,
+    ReportPageComponent,
   ],
   imports: [
     BrowserModule,
