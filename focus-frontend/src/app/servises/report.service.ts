@@ -18,7 +18,7 @@ export class ReportService {
 
   getReport(id: string): Observable<Report> {
     return this.http
-      .get<Report>("http://localhost:5000/api", this.httpOptions)
+      .get<Report>("http://localhost:5300/api/report/get/{reportId}", this.httpOptions)
       .pipe(retry(1), catchError(this.errorHandler));
   }
 
