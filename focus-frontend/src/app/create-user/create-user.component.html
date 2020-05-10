@@ -15,8 +15,8 @@
         <div class="form-group">
             <input type="text" formControlName="organizationId" placeholder="Организация">
         </div>
-        <select formControlName="organizationId" (ngModelChange) = "onChange($event)" *ngIf="organizations$ | async as organizations">
-            <option *ngFor = "let organization of organizations" [ngValue] = "organization">{{organization.title}}</option>
+        <select  (ngModelChange) = "onChange($event)" *ngIf="organizations$ | async as organizations">
+            <option formControlName="organizationId" *ngFor = "let organization of organizations" [ngValue] = "organization">{{organization.title}}</option>
         </select>
         <div class="form-group">
             <input type="text" formControlName="userRole" placeholder="Роль в организации">
