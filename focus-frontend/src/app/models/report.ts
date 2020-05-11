@@ -1,3 +1,5 @@
+import { Questionnaire } from './module';
+
 export class Report{
     id: string;
     title: string;
@@ -5,19 +7,6 @@ export class Report{
     assignedOrganizationId: string;
     status: number;
     deadline: Date;
-    questionnaireAnswers: [{
-        title: string;
-        order: number;
-        sectionAnswers: [{
-            title: string;
-            order: number;
-            questionAnswers: [{
-                title: string;
-                order: number;
-                answer: string;
-                answerType: number;
-            }]
-        }]
-    }] ;
+    questionnaireAnswers: Questionnaire[]
     tableAnswers: []
 }

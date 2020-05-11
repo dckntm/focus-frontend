@@ -30,7 +30,7 @@ export class CreateUserService {
 
   getOrganizations(): Observable<SimpleOrganization[]>{
     return this.http
-    .get<SimpleOrganization[]>("http://localhost:5200/api/org/info", this.httpOptions)
+    .get<SimpleOrganization[]>("http://localhost:5000/api/org/info", this.httpOptions)
     .pipe(retry(1), catchError(this.errorHandler));
   }
 

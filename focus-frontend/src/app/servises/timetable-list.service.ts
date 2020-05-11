@@ -18,7 +18,7 @@ export class TimetableListService {
 
   getOrganisations(): Observable<SimpleTimetable[]>{
     return this.http
-    .get<SimpleTimetable[]>("http://localhost:5400/api/report/schedule/info", this.httpOptions)
+    .get<SimpleTimetable[]>("http://localhost:5000/api/report/schedule/info", this.httpOptions)
     .pipe(retry(1), catchError(this.errorHandler));
   }
 

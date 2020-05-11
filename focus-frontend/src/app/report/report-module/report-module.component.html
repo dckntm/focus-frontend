@@ -1,1 +1,10 @@
-<p>report-module works!</p>
+<div class="container">
+    <div class="section" *ngFor = "let section of questionnaire.sectionAnswers; let in = index">
+        <p>{{section.title}}</p>
+        <ul>
+            <li *ngFor = "let question of questionnaire.sectionAnswers[in].questionAnswers; let i = index">{{question.title}}
+                <input type="text" [(ngModel)] = "question.answer" (ngModelChange) = "onChange($event)">
+            </li>           
+        </ul>
+    </div>
+</div>

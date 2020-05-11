@@ -17,8 +17,10 @@ export class ReportService {
   constructor(private http: HttpClient) { }
 
   getReport(id: string): Observable<Report> {
+    console.log(id);
+
     return this.http
-      .get<Report>("http://localhost:5300/api/report/get/id", this.httpOptions)
+      .get<Report>("http://localhost:5000/api/report/get/" + id , this.httpOptions)
       .pipe(retry(1), catchError(this.errorHandler));
   }
 
@@ -35,4 +37,17 @@ export class ReportService {
     return throwError(errorMessage);
   }
   
+  passReport(report:any)
+  {
+    return this.http.post("http://localhost:5000/api/report/pass", report, this.httpOptions)
+    .pipe(retry(1), catchError(this.errorHandler))
+    .subscribe(x => console.log(x));
+  }
+
+  saveReport(report:any)
+  {
+    return this.http.post("http://localhost:5000/api/report/save", report, this.httpOptions)
+    .pipe(retry(1), catchError(this.errorHandler))
+    .subscribe(x => console.log(x));
+  }
 }
