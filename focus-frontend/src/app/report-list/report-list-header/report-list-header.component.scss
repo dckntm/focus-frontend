@@ -1,6 +1,7 @@
 .container{
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 100vw;
     height: 5vh;
     background-color: red($color: #000000);
@@ -12,7 +13,7 @@
 }
 
 .rightElems{
-    margin-right: 4rem;
+    margin-left: auto;
 }
 
 .leftElem{

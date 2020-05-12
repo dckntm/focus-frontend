@@ -15,9 +15,9 @@ import { NavLinksComponent } from './nav-page/nav-links/nav-links.component';
 
 
 const routes: Routes = [
-  {path: '', component: ModulesComponent},
+  {path: 'create-report', component: ModulesComponent},
   {path: 'timetable', component: CreateTimetableComponent},
-  {path: 'auth', component: AuthComponent},
+  {path: '', component: AuthComponent},
   {path: 'timetable-list', component: TimetableListPageComponent},
   {path: 'organizations', component: OrganisationsListPageComponent},
   {path: 'c-u', component: CreateUserComponent},

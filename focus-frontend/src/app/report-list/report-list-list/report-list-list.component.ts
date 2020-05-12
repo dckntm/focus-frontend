@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ShortOrganisation } from 'src/app/models/short-organisation';
 import { ReportListService } from 'src/app/servises/report-list.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-report-list-list',
@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ReportListListComponent implements OnInit {
   ShortOrganisations$: Observable<ShortOrganisation[]>
 
-  constructor(private pageService: ReportListService, private route: ActivatedRoute) { }
+  constructor(private pageService: ReportListService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.loadReports();
@@ -22,6 +22,10 @@ export class ReportListListComponent implements OnInit {
 
   loadReports(){
     this.ShortOrganisations$ = this.pageService.getOrganisations()
+  }
+
+  goCreateReport(){
+    this.router.navigate(["/create-report"])
   }
 
 }
