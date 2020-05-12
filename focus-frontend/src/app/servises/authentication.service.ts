@@ -55,14 +55,16 @@ export class AuthenticationService {
         {
           this.isAdmin.next(true);
           console.log("admin logged in");
+          this.router.navigate(["/navigation"])
         }
         else {
           console.log("user logged in");
           this.isAdmin.next(false);
+          this.router.navigate(["/report-list"])
         }
 
         this.isLoggedIn.next(true);
-        this.router.navigate(["/report-list"])
+        
       });
     }
     
