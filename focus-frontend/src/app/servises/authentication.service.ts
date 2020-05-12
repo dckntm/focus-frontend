@@ -2,47 +2,71 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import * as jwt_decode from 'jwt-decode'
 
-export interface ApplicationUser{
-  token: string;
-  username: string;
-  expiresIn: Date;
-}
+// export interface ApplicationUser{
+//   token: string;
+//   username: string;
+//   expiresIn: Date;
+// }
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private currentUserSubject: BehaviorSubject<ApplicationUser>;
-  public currentUser: Observable<ApplicationUser>;
+
+  private isAdmin: BehaviorSubject<boolean>;
+  private isLoggedIn: BehaviorSubject<boolean>;
 
   constructor(private readonly http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<ApplicationUser>(
-      JSON.parse(localStorage.getItem("currentUser"))
-    );
-    this.currentUser = this.currentUserSubject.asObservable();
+    this.isAdmin = new BehaviorSubject<boolean>(false);
+
+    if (localStorage.getItem("currentUser") != '')
+      this.isLoggedIn = new BehaviorSubject<boolean>(true);
+    else 
+      this.isLoggedIn = new BehaviorSubject<boolean>(false);
   }
 
-  public get currentUserValue(): ApplicationUser{
-    return this.currentUserSubject.value;
+  public get userIsAdmin() : boolean {
+    return this.isAdmin.value;
+  }
+
+  public get userIsLoggedIn() : boolean {
+    return this.isLoggedIn.value;
   }
 
   login(username: string, password: string) {
-    return this.http
-      .post<any>("api/auth/login", { username, password })
-      .pipe(
-        map(user => {
-          if (user && user.token) {
-            localStorage.setItem("currentUser", JSON.stringify(user));
-            this.currentUserSubject.next(user);
-          }
-          return user;
-        })
-      );
-  }
+    console.log("logging in");
 
-  logout() {
-    localStorage.removeItem("currentUser");
-    this.currentUserSubject.next(null);
+    return this.http
+      .post<string>("http://localhost:5000/api/identity/login", { username, password })
+      .subscribe(token => {
+        
+        console.log(token);
+
+        localStorage.setItem("currentUser", token)
+
+        var token_info = jwt_decode(token);
+
+        console.log(token_info);
+
+        if (token_info.role == 'HOA')
+        {
+          this.isAdmin.next(true);
+          console.log("admin logged in");
+        }
+        else {
+          console.log("user logged in");
+          this.isAdmin.next(false);
+        }
+
+        this.isLoggedIn.next(true);
+      });
+    }
+    
+    logout() {
+      localStorage.removeItem("currentUser");
+      this.isAdmin.next(false);
+      this.isLoggedIn.next(false);
   }
 }

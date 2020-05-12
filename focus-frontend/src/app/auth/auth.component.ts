@@ -41,16 +41,16 @@ export class AuthComponent implements OnInit {
     console.log(this.form.username, this.form.password);
 
     this.authService
-      .login(this.form.username.value, this.form.password.value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.router.navigate([this.returnUrl]);
-        },
-        error => {
-          this.error = error;
-        }
-      );
+      .login(this.form.username.value, this.form.password.value);
+      // .pipe(first())
+      // .subscribe(
+      //   data => {
+      //     this.router.navigate([this.returnUrl]);
+      //   },
+      //   error => {
+      //     this.error = error;
+      //   }
+      // );
 
   }
 
