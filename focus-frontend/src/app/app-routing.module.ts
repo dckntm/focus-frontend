@@ -11,6 +11,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateOrgComponent } from './create-org/create-org.component';
 import { ReportPageComponent } from './report/report-page/report-page.component';
 import { ReportListPageComponent } from '../app/report-list/report-list-page/report-list-page.component'
+import { NavLinksComponent } from './nav-page/nav-links/nav-links.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'c-u', component: CreateUserComponent},
   {path: 'c-o', component: CreateOrgComponent},
   {path: 'report', component: ReportPageComponent},
-  {path: 'report-list', component: ReportListPageComponent}
+  {path: 'report-list', component: ReportListPageComponent},
+  {path: 'navigation', component: NavLinksComponent}
 
 ];
 

@@ -30,7 +30,9 @@ import { ReportListPageComponent } from './report-list/report-list-page/report-l
 import { ReportListListComponent } from './report-list/report-list-list/report-list-list.component';
 import { ReportListHeaderComponent } from './report-list/report-list-header/report-list-header.component';
 import { jwtInterceptorProvider } from './auth/jwt.interceptor'
-import { errorInterceptorProvider } from './auth/error.interceptor'
+import { errorInterceptorProvider } from './auth/error.interceptor';
+import { NavHeaderComponent } from './nav-page/nav-header/nav-header.component';
+import { NavLinksComponent } from './nav-page/nav-links/nav-links.component'
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { errorInterceptorProvider } from './auth/error.interceptor'
     ReportListPageComponent,
     ReportListListComponent,
     ReportListHeaderComponent,
+    NavHeaderComponent,
+    NavLinksComponent,
   ],
   imports: [
     BrowserModule,

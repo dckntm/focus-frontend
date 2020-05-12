@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import * as jwt_decode from 'jwt-decode'
+import { Router } from '@angular/router';
 
 // export interface ApplicationUser{
 //   token: string;
@@ -18,7 +19,7 @@ export class AuthenticationService {
   private isAdmin: BehaviorSubject<boolean>;
   private isLoggedIn: BehaviorSubject<boolean>;
 
-  constructor(private readonly http: HttpClient) {
+  constructor(private readonly http: HttpClient, private router: Router,) {
     this.isAdmin = new BehaviorSubject<boolean>(false);
 
     if (localStorage.getItem("currentUser") != '')
@@ -61,6 +62,7 @@ export class AuthenticationService {
         }
 
         this.isLoggedIn.next(true);
+        this.router.navigate(["/report-list"])
       });
     }
     

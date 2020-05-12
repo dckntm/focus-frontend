@@ -41,7 +41,9 @@ export class AuthComponent implements OnInit {
     console.log(this.form.username, this.form.password);
 
     this.authService
-      .login(this.form.username.value, this.form.password.value);
+      .login(this.form.username.value, this.form.password.value)
+      
+      
       // .pipe(first())
       // .subscribe(
       //   data => {
