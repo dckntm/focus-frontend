@@ -29,8 +29,8 @@ import { ReportPageComponent } from './report/report-page/report-page.component'
 import { ReportListPageComponent } from './report-list/report-list-page/report-list-page.component';
 import { ReportListListComponent } from './report-list/report-list-list/report-list-list.component';
 import { ReportListHeaderComponent } from './report-list/report-list-header/report-list-header.component';
-
-
+import { jwtInterceptorProvider } from './auth/jwt.interceptor'
+import { errorInterceptorProvider } from './auth/error.interceptor'
 
 @NgModule({
   declarations: [
@@ -70,7 +70,7 @@ import { ReportListHeaderComponent } from './report-list/report-list-header/repo
   exports: [
     MatSidenavModule,
   ],
-  providers: [],
+  providers: [jwtInterceptorProvider, errorInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
