@@ -1,7 +1,7 @@
 @rss = http://localhost:5000
 @rcs = http://localhost:5000
 @processor = http://localhost:5000
-@reportTemplateId = 5eb973f8941e070001262871
+@reportTemplateId = 5eba9bc27fc7b00001d3d813
 @reportId = 5eb98d4f19f5ab000199a5d2 
 @adminAuth = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJIT0EiLCJpc3MiOiJmb2N1c19pc3N1ZXIiLCJhdWQiOiJmb2N1c19hdWRpZW5jZSJ9.C6DJ2Y_lMXZ-DLZHDdVJrIAI0T5Nm_DovTMtRmGzu_8
 
@@ -27,6 +27,20 @@ Authorization: {{adminAuth}}
           }
         ],
         "title": "Module Title",
+        "order": 0
+      },
+      {
+        "sections": [
+          {
+            "title": "Section",
+            "order": 1,
+            "questions": [
+              { "questionText": "question 1", "inputType": 6 },
+              { "questionText": "question 2", "inputType": 10 }
+            ]
+          }
+        ],
+        "title": "Ilya krasavets",
         "order": 0
       }
     ],
@@ -101,28 +115,7 @@ Content-Type: application/json
         }
       ]
     }
-    {
-      "title": "Module Title",
-      "order": 0,
-      "sectionAnswers": [
-        {
-          "title": "Section Title",
-          "order": 0,
-          "questionAnswers": [
-            {
-              "title": "question 1",
-              "order": 0,
-              "answer": "answer for question 1",
-              "answerType": 6
-            },
-            {
-              "title": "question 2",
-              "order": 1,
-              "answer": "answer for question 2",
-              "answerType": 10
-            }
-          ]
-        }
+    
       ]
     }
   ],

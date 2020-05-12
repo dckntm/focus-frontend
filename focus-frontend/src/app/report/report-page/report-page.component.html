@@ -8,7 +8,7 @@
       <form #formRef = "ngForm">
         <div *ngFor = "let module of moduleComponents; let in = index">
           <div class="form-group">
-            <button class="button">{{moduleComponents[in].questionnaire.title}}</button>
+            <button class="button" (click) = "setModule(in)">{{moduleComponents[in].questionnaire.title}}</button>
           </div>
         </div>
       </form>

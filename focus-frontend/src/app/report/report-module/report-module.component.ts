@@ -8,7 +8,8 @@ import { Questionnaire } from '../../models/module';
 })
 export class ReportModuleComponent implements OnInit {
   questionnaire: Questionnaire;
-  currentStyles: {};
+  currentStyles: {
+  };
 
   constructor() { }
 
@@ -28,7 +29,5 @@ export class ReportModuleComponent implements OnInit {
 
   onChange(answer){
     console.log(this.questionnaire)
-
-
   }
 }

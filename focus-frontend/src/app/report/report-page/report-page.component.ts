@@ -34,7 +34,7 @@ export class ReportPageComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver, private pageService: ReportService, private componentFactoryResolver: ComponentFactoryResolver) {}
 
   ngOnInit(){
-    this.reportId = "5eb98d4f19f5ab000199a5d2";
+    this.reportId = "5eba9be1e849970001da88b6";
     this.pageService.getReport(this.reportId).subscribe(x => this.processReport(x));
     
   }
@@ -47,6 +47,9 @@ export class ReportPageComponent implements OnInit {
     this.moduleComponents.push(NewItem);
   
     moduleComponentRef.instance.initQuestionnaireData(_questionnaire);
+    moduleComponentRef.instance.currentStyles={
+      display: 'none',
+    }
     console.log(this.currentModule)
   }
 
@@ -58,6 +61,7 @@ export class ReportPageComponent implements OnInit {
 
     this.dataR.questionnaireAnswers.forEach(questionnaire => {
       this.createModules(questionnaire);
+      
     });
   }
 
@@ -90,6 +94,8 @@ export class ReportPageComponent implements OnInit {
     this.moduleComponents[this.currentModule].currentStyles = {
       display: 'none',
     }
+
+    console.log(value);
 
     //show current module
     this.currentModule = value;
