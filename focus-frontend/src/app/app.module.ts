@@ -26,6 +26,10 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateOrgComponent } from './create-org/create-org.component';
 import { ReportModuleComponent } from './report/report-module/report-module.component';
 import { ReportPageComponent } from './report/report-page/report-page.component';
+import { ReportListPageComponent } from './report-list/report-list-page/report-list-page.component';
+import { ReportListListComponent } from './report-list/report-list-list/report-list-list.component';
+import { ReportListHeaderComponent } from './report-list/report-list-header/report-list-header.component';
+
 
 
 @NgModule({
@@ -45,6 +49,9 @@ import { ReportPageComponent } from './report/report-page/report-page.component'
     CreateOrgComponent,
     ReportModuleComponent,
     ReportPageComponent,
+    ReportListPageComponent,
+    ReportListListComponent,
+    ReportListHeaderComponent,
   ],
   imports: [
     BrowserModule,
