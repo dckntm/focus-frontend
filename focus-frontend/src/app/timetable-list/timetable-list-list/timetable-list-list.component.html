@@ -1,7 +1,7 @@
 <div class="container">
     <div class="head">
         <p>Расписания</p>
-        <button class="push">Добавить новое расписание</button>
+        <button class="push" (click) = "goCreateTimetable()">Добавить новое расписание</button>
     </div>
     <hr>
     <div class="organisation-list" *ngIf="SimpleTimetables$ | async as SimpleTimetables">
