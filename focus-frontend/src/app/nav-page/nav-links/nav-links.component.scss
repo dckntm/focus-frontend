@@ -1,10 +1,17 @@
 .container{
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: space-evenly;
+    height: 85vh;
 }
 
-input{
-    width: 40vw;
+button{
+    width: 30vw;
+    background-color: white;
+    transition: 1s;
 }
+
+button:hover{
+    background-color: blue;
+    color: white;
+}
+
