@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Template } from '../models/templates';
+import { SimpleOrganization } from '../models/simple-organisation';
 
 
 @Injectable({
@@ -16,16 +18,18 @@ export class CreateTimetableService {
 
   constructor(private http: HttpClient) {}
 
-  getTemplates(){
+  getTemplates() : Observable<Template[]>{
     return this.http
-    .get<string[]>("http://localhost5000/api/get/templates", this.httpOptions)
+    .get <Template[]>("http://localhost:5000/api/report/template/info", this.httpOptions)
     .pipe(catchError(this.errorHandler));
+    console.log('got');
   }
 
-  getOrganisations(){
+  getOrganisations(): Observable<SimpleOrganization[]>{
     return this.http
-    .get<string[]>("http://localhost5000/api/identity/info", this.httpOptions)
+    .get<SimpleOrganization[]>("http://localhost:5000/api/org/info", this.httpOptions)
     .pipe(catchError(this.errorHandler));
+    console.log('got');
   }
 
   

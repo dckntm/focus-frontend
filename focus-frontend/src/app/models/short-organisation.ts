@@ -1,10 +1,6 @@
-export class ShortOrganisation{
-    id: string;
-    title: string;
-    reports:[{
-        id: string;
-        title: string;
-        deadline: boolean;
-        }   
-    ]
+export class ShortOrganisation {
+    id                      : string;
+    assignedOrganizationId  : string;
+    reportStatus            : string;
+    deadline                : string;    // stringed datetime object
 }

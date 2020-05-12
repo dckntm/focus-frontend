@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CreateTimetableService } from '../../servises/create-timetable.service';
+import { SimpleOrganization } from 'src/app/models/simple-organisation';
+import { Template } from '../../models/templates';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-create-timetable',
@@ -7,17 +10,41 @@ import { CreateTimetableService } from '../../servises/create-timetable.service'
   styleUrls: ['./create-timetable.component.scss']
 })
 export class CreateTimetableComponent implements OnInit {
+  organizations$: Observable<SimpleOrganization[]>;
+  templates$: Observable<Template[]>;
 
-  constructor() { }
+  constructor(private pageService: CreateTimetableService) { }
+
+  
 
   timetable = {
-    template: '',
-    deadline: '',
+    id: '',
+    reportTemplate: '',
+    deadlinePeriod: '',
+    emissionPeriod: '',
+    emissionStart: '',
+    emissionEnd: '',
+    organizations: [{
+      organization: '',
+      isDelegatedToCOA: false,
+      assignees: [{
+        user: '',
+        role: 0,
+      }]
+    }]
   }
 
-  templates = [{'type': '1 organisation'}, {'type': '2 organisation'}, {'type': '3 organisation'}];
-
   ngOnInit(): void {
+    this.loadOrgsTemplates();
+  }
+
+  loadOrgsTemplates(){
+    this.organizations$ = this.pageService.getOrganisations();
+    this.templates$ = this.pageService.getTemplates();
+  }
+
+  onChange(type) {
+    console.log(this.timetable)
   }
 
 }

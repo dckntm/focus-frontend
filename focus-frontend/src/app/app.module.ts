@@ -32,7 +32,8 @@ import { ReportListHeaderComponent } from './report-list/report-list-header/repo
 import { jwtInterceptorProvider } from './auth/jwt.interceptor'
 import { errorInterceptorProvider } from './auth/error.interceptor';
 import { NavHeaderComponent } from './nav-page/nav-header/nav-header.component';
-import { NavLinksComponent } from './nav-page/nav-links/nav-links.component'
+import { NavLinksComponent } from './nav-page/nav-links/nav-links.component';
+import { TimetableHeaderComponent } from './create-timetable/timetable-header/timetable-header.component'
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { NavLinksComponent } from './nav-page/nav-links/nav-links.component'
     ReportListHeaderComponent,
     NavHeaderComponent,
     NavLinksComponent,
+    TimetableHeaderComponent,
   ],
   imports: [
     BrowserModule,
