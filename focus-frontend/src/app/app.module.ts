@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,7 +34,10 @@ import { jwtInterceptorProvider } from './auth/jwt.interceptor'
 import { errorInterceptorProvider } from './auth/error.interceptor';
 import { NavHeaderComponent } from './nav-page/nav-header/nav-header.component';
 import { NavLinksComponent } from './nav-page/nav-links/nav-links.component';
-import { TimetableHeaderComponent } from './create-timetable/timetable-header/timetable-header.component'
+import { TimetableHeaderComponent } from './create-timetable/timetable-header/timetable-header.component';
+import { TextMaskModule } from 'angular2-text-mask';
+
+
 
 @NgModule({
   declarations: [
@@ -72,6 +76,7 @@ import { TimetableHeaderComponent } from './create-timetable/timetable-header/ti
     MatListModule,
     HttpClientModule,
     ReactiveFormsModule,
+    TextMaskModule,
   ],
   exports: [
     MatSidenavModule,
