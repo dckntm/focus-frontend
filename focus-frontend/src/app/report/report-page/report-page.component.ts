@@ -6,6 +6,7 @@ import { Report } from 'src/app/models/report';
 import { ReportService } from 'src/app/servises/report.service';
 import { ReportModuleComponent } from '../report-module/report-module.component';
 import { Questionnaire } from 'src/app/models/module';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-report-page',
@@ -31,10 +32,14 @@ export class ReportPageComponent implements OnInit {
 
   
 
-  constructor(private breakpointObserver: BreakpointObserver, private pageService: ReportService, private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private pageService: ReportService, private componentFactoryResolver: ComponentFactoryResolver, private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      this.reportId = 
+        params["reportId"]
+    })
+  }
 
   ngOnInit(){
-    this.reportId = "5eba9be1e849970001da88b6";
     this.pageService.getReport(this.reportId).subscribe(x => this.processReport(x));
     
   }

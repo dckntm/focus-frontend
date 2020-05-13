@@ -1,5 +1,5 @@
 export class ShortReportInfo {
-    title: string;
+    title                   : string;
     id                      : string;
     assignedOrganizationId  : string;
     reportStatus            : string;
