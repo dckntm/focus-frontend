@@ -21,6 +21,7 @@ export class ReportListListComponent implements OnInit {
   reports$: Observable<ShortReportInfo[]>
   organizations$: Observable<SimpleOrganization[]>
   isAdmin: boolean;
+  isNotAdmin: boolean;
 
   composedReports: OrgReports[]
 
@@ -33,17 +34,22 @@ export class ReportListListComponent implements OnInit {
 
   ngOnInit(): void {
     this.isAdmin = this.auth.userIsAdmin;
-    console.log(this.isAdmin)
+    this.isNotAdmin = !this.auth.userIsAdmin
+    console.log(this.isAdmin);
+    console.log(this.isNotAdmin)
     
     this.loadReports();
-    this.reports$.subscribe(x => console.log(x));
-
-    if(this.isAdmin)
+    this.reports$.subscribe(x => {
+      console.log(x)
+      if(true)
     {
       // call & get short organization infos
       this.organizations$ = this.orgService.getOrganisations();
-      
+      this.composedReports = [];
+
       this.organizations$.subscribe(orgs => {
+        console.log(orgs);
+        
         orgs.forEach(org => {
           let orgReports = new OrgReports;
           
@@ -51,26 +57,42 @@ export class ReportListListComponent implements OnInit {
           orgReports.reports = [] as ShortReportInfo[];
 
           // maybe wrong
-          this.reports$.subscribe(reports => {
-            reports.forEach(report => {
+          
+            x.forEach(report => {
+              console.log("report: " + report.assignedOrganizationId + " org: " + org.id)
               if (report.assignedOrganizationId == org.id) {
                 orgReports.reports.push(report);
               }
             });
-          });
+          
+
+          console.log(orgReports);
 
           this.composedReports.push(orgReports);
         });
       })
     }
+    });
+
+    
   }
 
   loadReports(){
-    this.reports$ = this.pageService.getOrganisations()
+
+    if (this.isAdmin)
+    {
+      this.reports$ = this.pageService.getAllReports();
+    } else {
+      this.reports$ = this.pageService.getOrganisations();
+    }
   }
 
   goCreateReport(){
     this.router.navigate(["/create-report"])
+  }
+
+  goReport(id){
+    this.router.navigate(["/report/" + id])
   }
 
 }

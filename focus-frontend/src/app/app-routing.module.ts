@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'organizations', component: OrganisationsListPageComponent},
   {path: 'c-u', component: CreateUserComponent},
   {path: 'c-o', component: CreateOrgComponent},
-  {path: 'report', component: ReportPageComponent},
+  {path: 'report/:reportId', component: ReportPageComponent},
   {path: 'report-list', component: ReportListPageComponent},
   {path: 'navigation', component: NavLinksComponent}
 

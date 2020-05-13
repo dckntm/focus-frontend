@@ -8,6 +8,7 @@ import { ShortReportInfo } from '../models/short-organisation'
   providedIn: 'root'
 })
 export class ReportListService {
+  
   httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json; charset=utf-8"
@@ -19,6 +20,12 @@ export class ReportListService {
   getOrganisations(): Observable<ShortReportInfo[]>{
     return this.http
     .get<ShortReportInfo[]>("http://localhost:5000/api/report/org", this.httpOptions)
+    .pipe(retry(1), catchError(this.errorHandler));
+  }
+
+  getAllReports(): Observable<ShortReportInfo[]> {
+    return this.http
+    .get<ShortReportInfo[]>("http://localhost:5000/api/report/info", this.httpOptions)
     .pipe(retry(1), catchError(this.errorHandler));
   }
 

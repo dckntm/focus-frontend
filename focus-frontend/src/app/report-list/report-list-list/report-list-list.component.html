@@ -7,10 +7,20 @@
     </div>
     <hr>
     <!-- i need 2 different views in case for admin (using composed reports) and in case of simple user (just list of reports) -->
-    <div class="organisation-list" *ngIf="reports$ | async as reports">      
+    <div *ngIf="isNotAdmin" >
+        <div class="organisation-list" *ngIf="reports$ | async as reports">
             <ul class="border" *ngFor="let report of reports; let in = index">
-                <li>{{report.title}}</li>
-            </ul>       
+                <li (click)="goReport(report.id)">{{report.title}}</li>
+            </ul> 
+        </div>                      
+    </div>
+    <div *ngIf="isAdmin">
+            <div *ngFor = "let organization of composedReports; let in = index">
+                <p>{{organization.orgTitle}}</p>
+                <ul class="border" *ngFor="let report of organization.reports">
+                    <li (click)="goReport(report.id)">{{report.title}}</li>
+                </ul>  
+            </div>
     </div>
 </div>
 
