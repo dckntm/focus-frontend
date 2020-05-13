@@ -1,8 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ShortOrganisation } from 'src/app/models/short-organisation';
+import { ShortReportInfo } from 'src/app/models/short-organisation';
 import { ReportListService } from 'src/app/servises/report-list.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/servises/authentication.service';
+import { OrganisationsListService } from 'src/app/servises/organisations-list.service';
+import { SimpleOrganization } from 'src/app/models/simple-organisation';
+
+class OrgReports {
+  orgTitle:string;
+  reports:ShortReportInfo[];
+}
 
 @Component({
   selector: 'app-report-list-list',
@@ -10,18 +18,55 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./report-list-list.component.scss']
 })
 export class ReportListListComponent implements OnInit {
-  ShortOrganisations$: Observable<ShortOrganisation[]>
+  reports$: Observable<ShortReportInfo[]>
+  organizations$: Observable<SimpleOrganization[]>
+  isAdmin: boolean;
 
-  constructor(private pageService: ReportListService, private route: ActivatedRoute, private router: Router) { }
+  composedReports: OrgReports[]
+
+  constructor(
+    private pageService: ReportListService, 
+    private route: ActivatedRoute, 
+    private router: Router, 
+    private auth: AuthenticationService,
+    private orgService: OrganisationsListService) { }
 
   ngOnInit(): void {
+    this.isAdmin = this.auth.userIsAdmin;
+    console.log(this.isAdmin)
+    
     this.loadReports();
+    this.reports$.subscribe(x => console.log(x));
 
-    this.ShortOrganisations$.subscribe(x => console.log(x));
+    if(this.isAdmin)
+    {
+      // call & get short organization infos
+      this.organizations$ = this.orgService.getOrganisations();
+      
+      this.organizations$.subscribe(orgs => {
+        orgs.forEach(org => {
+          let orgReports = new OrgReports;
+          
+          orgReports.orgTitle = org.title;
+          orgReports.reports = [] as ShortReportInfo[];
+
+          // maybe wrong
+          this.reports$.subscribe(reports => {
+            reports.forEach(report => {
+              if (report.assignedOrganizationId == org.id) {
+                orgReports.reports.push(report);
+              }
+            });
+          });
+
+          this.composedReports.push(orgReports);
+        });
+      })
+    }
   }
 
   loadReports(){
-    this.ShortOrganisations$ = this.pageService.getOrganisations()
+    this.reports$ = this.pageService.getOrganisations()
   }
 
   goCreateReport(){

@@ -1,4 +1,5 @@
-export class ShortOrganisation {
+export class ShortReportInfo {
+    title: string;
     id                      : string;
     assignedOrganizationId  : string;
     reportStatus            : string;

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { retry, catchError } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
-import { ShortOrganisation } from '../models/short-organisation'
+import { ShortReportInfo } from '../models/short-organisation'
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +16,9 @@ export class ReportListService {
 
   constructor(private http:HttpClient) {}
 
-  getOrganisations(): Observable<ShortOrganisation[]>{
+  getOrganisations(): Observable<ShortReportInfo[]>{
     return this.http
-    .get<ShortOrganisation[]>("http://localhost:5000/api/report/org", this.httpOptions)
+    .get<ShortReportInfo[]>("http://localhost:5000/api/report/org", this.httpOptions)
     .pipe(retry(1), catchError(this.errorHandler));
   }
 

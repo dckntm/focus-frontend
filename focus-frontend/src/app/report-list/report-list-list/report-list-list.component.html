@@ -2,17 +2,15 @@
 <div class="container">
     <div class="head">
         <p>Отчёты</p>
-        <button class="push" (click) = "goCreateReport()">Добавить новый отчёт</button>
+        <!-- should be hidden if not isAdmin -->
+        <button *ngIf="isAdmin" class="push" (click) = "goCreateReport()">Добавить новый отчёт</button>
     </div>
     <hr>
-    <div class="organisation-list" *ngIf="ShortOrganisations$ | async as organizations">
-        <div class="some-organization" *ngFor="let organization of organizations; let in = index">
-            <p>{{organization.title}}</p>
-            <ul class="border" *ngFor="let report of organization.reports">
+    <!-- i need 2 different views in case for admin (using composed reports) and in case of simple user (just list of reports) -->
+    <div class="organisation-list" *ngIf="reports$ | async as reports">      
+            <ul class="border" *ngFor="let report of reports; let in = index">
                 <li>{{report.title}}</li>
-            </ul>
-        </div>
-        
+            </ul>       
     </div>
 </div>
 
