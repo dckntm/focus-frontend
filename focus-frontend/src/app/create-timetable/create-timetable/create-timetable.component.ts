@@ -22,8 +22,7 @@ export class CreateTimetableComponent implements OnInit {
   period: string;
   emissionStart: Date ;
   emissionEnd: Date;
-
-  public mask = [/\d/, /\d/, '.', /\d/, /\d/, '.', /\d/, /\d/, /\d/, /\d/]
+  scheduleState: boolean;
 
   
 
@@ -34,8 +33,16 @@ export class CreateTimetableComponent implements OnInit {
   timetable = {
     id: '',
     reportTemplate: '',
-    deadlinePeriod: '',
-    emissionPeriod: '',
+    deadlinePeriod: {
+      days: 0,
+      months: 0,
+      years: 0,
+    },
+    emissionPeriod: {
+      days: 0,
+      months: 0,
+      years: 0,
+    },
     emissionStart: '',
     emissionEnd: '',
     organizations: []
@@ -71,23 +78,36 @@ export class CreateTimetableComponent implements OnInit {
   }
 
   onChange() {
+    if(this.scheduleState){
+    this.currentStyles = {
+      display: 'none',
+    }}else{
+      this.currentStyles = {
+        display: 'block',
+      }
+    }
+    console.log(this.scheduleState)
   }
+
+  currentStyles: {};
 
   createTimetable(){
-    this.timetable.deadlinePeriod = this.deadline + ".0.0";
-    this.timetable.emissionPeriod = this.period + ".0.0";
+    this.timetable.deadlinePeriod.days = +this.deadline;
+    this.timetable.emissionPeriod.days = +this.period;
     this.orgSelect.forEach((org) => {
       if(org.picked){
-        this.addQuestionnare(org.title)
+        this.timetable.organizations.push(org.id);
       }
     })
-    this.pageService.postTimetable(this.timetable);
+
+    if (this.scheduleState)
+    {
+      this.pageService.postTimetable(this.timetable);
+    } else {
+      this.pageService.counstructReport(this.timetable);
+    }
     console.log(this.timetable);
     console.log(this.orgSelect)
-  }
-
-  addQuestionnare(value: string){
-    this.timetable.organizations.push({organization: value, isDelegatedToCOA: false, assignees:[{user: '', role: 0}]})
   }
 
   change() {

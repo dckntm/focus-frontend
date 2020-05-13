@@ -9,14 +9,16 @@
     </div>
     
     <p>регулярность <label class="switch">
-        <input type="checkbox" >
-        <span class="slider round"></span>
+        <input type="checkbox" (change)="onChange()" [(ngModel)] = "scheduleState">
+        <span class="slider round" ></span>
     </label></p>
     <div>
         <p>Дедлайн  <input [(ngModel)] = "deadline" type="number">  дней.</p>
-        <p>Периодичность <input [(ngModel)] = "period" type="number"> дней.</p>
-        <p>Период: начало <input [(ngModel)] = "timetable.emissionStart" placeholder="__.__.____" type="date"></p>
-        <p>конец <input [(ngModel)] = "timetable.emissionEnd" placeholder="__.__.____" type="date"></p>
+        <div [ngStyle]="currentStyles">
+            <p>Периодичность <input [(ngModel)] = "period" type="number"> дней.</p>
+            <p>Период: начало <input [(ngModel)] = "timetable.emissionStart" placeholder="__.__.____" type="date"></p>
+            <p>конец <input [(ngModel)] = "timetable.emissionEnd" placeholder="__.__.____" type="date"></p>
+        </div>
     </div>
     <div class="organisationsList">
         <p>организации</p>
@@ -28,7 +30,7 @@
         
 
     </div>
-    <button (click) = "createTimetable()">Создать расписание</button>
+    <button class="button" (click) = "createTimetable()">Создать расписание</button>
     
     
 </div>

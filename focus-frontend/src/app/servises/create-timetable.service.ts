@@ -10,6 +10,13 @@ import { SimpleOrganization } from '../models/simple-organisation';
   providedIn: 'root'
 })
 export class CreateTimetableService {
+  counstructReport(timetable: object) {
+    return this.http
+    .post("http://localhost:5000/api/report/schedule/construct", timetable)
+    .pipe(catchError(this.errorHandler))
+    .subscribe(x => console.log(x));
+  }
+
   httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json; charset=utf-8"

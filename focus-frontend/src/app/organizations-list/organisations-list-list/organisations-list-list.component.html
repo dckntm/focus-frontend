@@ -6,7 +6,9 @@
     <hr>
     <div class="organisation-list" *ngIf="SimpleOrganizations$ | async as SimpleOrganizations">
         <ul *ngFor="let SimpleOrganization of SimpleOrganizations" class="border">
-            <li>{{SimpleOrganizations.title}}</li>
+            <li>{{SimpleOrganization.title}} <br>
+                <!-- <ng-container *ngIf="show">{{SimpleOrganization.id}}</ng-container> -->
+            </li>
         </ul>
     </div>
 </div>

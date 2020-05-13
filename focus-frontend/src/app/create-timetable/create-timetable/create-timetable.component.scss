@@ -1,5 +1,11 @@
 .container{
+    width: 20vw;
     flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5vh;
+    padding-left: 40vw;
 }
 
 .switch{
@@ -65,7 +71,7 @@
 
   .button {
     height: 4.5vh;
-    width: 14vw;
+    width: 15vw;
     padding: 0;
     margin-left: 1em;
     border: none;
@@ -76,4 +82,13 @@
     border: solid 1px white;
     border-radius: 10px;
 
+  }
+
+  select{
+    width: 15vw;
+    height: 6vh;
+  }
+
+  p{
+    font-size: 2vh;
   }
