@@ -13,10 +13,10 @@
         </div>
       </form>
     </mat-nav-list>
-    <button class="saveButton" (click)="saveReport()">
+    <button class="saveButton" (click)="saveReport()" [routerLink]="['/reports']">
       Сохранить отчёт
     </button>
-    <button class="postButton" (click)="passReport()">
+    <button class="postButton" (click)="passReport()" [routerLink]="['/reports']">
       Создать отчёт
     </button>
   </mat-sidenav>

@@ -1,5 +1,5 @@
 <div class="container" [ngStyle]="currentStyles">
-    <h1>{{value?.title}}</h1>
+    <input class="input qInput" type="text" [(ngModel)] = "value.title">
     <form #formRef = "ngForm">
         <div *ngFor = "let section of questionnaire.sections; let in = index">
             <div class="form-group">

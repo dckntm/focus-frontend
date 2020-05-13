@@ -94,6 +94,11 @@ export class CreateTimetableComponent implements OnInit {
   createTimetable(){
     this.timetable.deadlinePeriod.days = +this.deadline;
     this.timetable.emissionPeriod.days = +this.period;
+
+    if (this.scheduleState){
+      this.timetable.emissionPeriod.days = 0;
+    }
+
     this.orgSelect.forEach((org) => {
       if(org.picked){
         this.timetable.organizations.push(org.id);

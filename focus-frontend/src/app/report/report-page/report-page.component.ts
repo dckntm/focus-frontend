@@ -6,7 +6,7 @@ import { Report } from 'src/app/models/report';
 import { ReportService } from 'src/app/servises/report.service';
 import { ReportModuleComponent } from '../report-module/report-module.component';
 import { Questionnaire } from 'src/app/models/module';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-report-page',
@@ -32,7 +32,7 @@ export class ReportPageComponent implements OnInit {
 
   
 
-  constructor(private breakpointObserver: BreakpointObserver, private pageService: ReportService, private componentFactoryResolver: ComponentFactoryResolver, private route: ActivatedRoute) {
+  constructor(private breakpointObserver: BreakpointObserver, private pageService: ReportService, private componentFactoryResolver: ComponentFactoryResolver, private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe(params => {
       this.reportId = 
         params["reportId"]
@@ -85,13 +85,18 @@ export class ReportPageComponent implements OnInit {
   }
 
   passReport() {
+    console.log("passed")
     // api/report/pass
     this.pageService.passReport(this.composeDataForSending());
+    this.router.navigateByUrl('report-list', { skipLocationChange: true});
   }
   
   saveReport(){
+    console.log("saved")
     // api/report/save
     this.pageService.saveReport(this.composeDataForSending());
+    this.router.navigateByUrl('report-list', { skipLocationChange: true});
+    // this.router.navigate("/reports");
   }
 
   setModule(value){
@@ -107,6 +112,7 @@ export class ReportPageComponent implements OnInit {
     this.moduleComponents[value].currentStyles = {
       display: 'block',
     }
+    
 
   }
 
