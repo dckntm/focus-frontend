@@ -97,6 +97,8 @@ export class CreateTimetableComponent implements OnInit {
 
     if (this.scheduleState){
       this.timetable.emissionPeriod.days = 0;
+      this.timetable.emissionStart = "01.01.2020";
+      this.timetable.emissionEnd = "01.01.2020";
     }
 
     this.orgSelect.forEach((org) => {
