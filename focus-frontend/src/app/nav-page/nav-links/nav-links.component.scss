@@ -5,13 +5,54 @@
 }
 
 button{
+    margin-top: 5em;
+    border: none;
+    box-shadow: 0 0 8px rgba(73, 73, 73, 0.5);
     width: 30vw;
     background-color: white;
-    transition: 1s;
+    transition: 0.5s;
+    line-height: 140em;
+
+    text-transform: uppercase;
+    
 }
 
 button:hover{
-    background-color: blue;
     color: white;
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+    cursor: pointer;
+    
+}
+
+.img1{
+    background-image: url('../../../images/Fotolia_45963487_Subscription_XXL.jpg');
+    background-size: 100%;
+    transition: 0.5s;
+}
+
+.img2{
+    background-image: url('../../../images/57aac5e7ec04594b7e8fe753510e4e04.jpg');
+    background-size: 100%;
+}
+.img3{
+    background-image: url('../../../images/scale_1200.jpeg');
+    background-size: 100%;
+}
+
+.img1:hover{
+    opacity: 0.6;
+
+}
+.img2:hover{
+    opacity: 0.6;
+}
+.img3:hover{
+    opacity: 0.6;
+}
+
+p{
+    bottom: 0;
 }
 
