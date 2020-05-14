@@ -4,16 +4,18 @@
         <button class="push" (click) = "goCreateTimetable()">Добавить новое расписание</button>
     </div>
     <hr>
-    <div class="organisation-list" *ngIf="SimpleTimetables$ | async as SimpleTimetables">
-        <ul class="border" *ngFor="let SimpleTimetable of SimpleTimetables">
-            <li>{{SimpleTimetables.title}}</li>
+    <div class="organisation-list" >
+        <ul class="border" *ngFor="let schedule of schedules">
+            <li class="li">{{schedule.template}}
+                <ul *ngFor="let org of schedule.organizatins">
+                    <li>
+                        {{org}}
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
-    <div class="organisation-list">
-        <ul class="border">
-            <li>example</li>
-        </ul>
-    </div>
+    
 
 
 </div>

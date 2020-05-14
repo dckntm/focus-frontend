@@ -15,7 +15,7 @@
         </div>                      
     </div>
     <div *ngIf="isAdmin">
-            <div *ngFor = "let organization of composedReports; let in = index">
+            <div class="organisation-list" *ngFor = "let organization of composedReports; let in = index">
                 <p>{{organization.orgTitle}}</p>
                 <ul class="border" *ngFor="let report of organization.reports">
                     <li (click)="goReport(report.id)">{{report.title}}</li>

@@ -15,17 +15,19 @@ export class CreateOrgService {
 
   constructor(private http: HttpClient) { }
 
-  postOrg(id: string, title: string, address: string, number: number, isHead: boolean){
+  postOrg(id: string, title: string, address: string, num: number, isHead: boolean){
+    console.log("successful")
     return this.http
     .post<string>("http://localhost:5000/api/org/create",{
       id,
       title,
       address,
-      phoneNumber: number,
+      phoneNumber: num,
       isHead,
-      members: []
+      members: [],
     })
     .pipe(catchError(this.errorHandler))
+    
   }
 
   errorHandler(error) {

@@ -23,6 +23,7 @@ export class CreateOrgComponent implements OnInit {
       address: "",
       number: "",
       isHead: false,
+      members: [] = [],
     });
   }
 
@@ -32,12 +33,13 @@ export class CreateOrgComponent implements OnInit {
 
   onSubmit() {
     
-
-    console.log(this.form.title, this.form.address, this.form.number);
+    console.log(this.form.title.value, this.form.address.value, this.form.number.value);
 
     this.pageService
+      
       .postOrg(this.form.id.value, this.form.title.value, this.form.address.value, this.form.number.value, this.form.isHead.value)
       .pipe(first())
+      .subscribe(x => console.log(x))
   }
 
 }

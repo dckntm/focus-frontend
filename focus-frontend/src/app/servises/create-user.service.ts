@@ -18,7 +18,7 @@ export class CreateUserService {
 
   postUser(name: string, surname: string, patronymic:string, organizationId: string, userRole: string){
     return this.http
-    .post<string>("http://localhost:5200/api/identity/create",{
+    .post<string>("http://localhost:5000/api/identity/create",{
       name,
       surname,
       patronymic,
