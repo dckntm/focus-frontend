@@ -22,15 +22,15 @@ textarea:focus:-moz-placeholder { color:transparent; }
 textarea:focus::-moz-placeholder { color:transparent; }
 textarea:focus:-ms-input-placeholder { color:transparent; }
 
-input::-webkit-input-placeholder { color: #fff;}
-input:-moz-placeholder { color: #fff;}
-input::-moz-placeholder { color: #fff;}
-input:-ms-input-placeholder { color: #fff;}
+input::-webkit-input-placeholder { color: #000;}
+input:-moz-placeholder { color: #000;}
+input::-moz-placeholder { color: #000;}
+input:-ms-input-placeholder { color: #000;}
 
-textarea::-webkit-input-placeholder { color: #fff;}
-textarea:-moz-placeholder { color: #fff;}
-textarea::-moz-placeholder { color: #fff;}
-textarea:-ms-input-placeholder { color: #fff;}
+textarea::-webkit-input-placeholder { color: #000;}
+textarea:-moz-placeholder { color: #000;}
+textarea::-moz-placeholder { color: #000;}
+textarea:-ms-input-placeholder { color: #000;}
 
 label {
   margin: 0;

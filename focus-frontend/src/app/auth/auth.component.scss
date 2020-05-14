@@ -22,15 +22,15 @@ textarea:focus:-moz-placeholder { color:transparent; }
 textarea:focus::-moz-placeholder { color:transparent; }
 textarea:focus:-ms-input-placeholder { color:transparent; }
 
-input::-webkit-input-placeholder { color: #fff;}
-input:-moz-placeholder { color: #fff;}
-input::-moz-placeholder { color: #fff;}
-input:-ms-input-placeholder { color: #fff;}
+input::-webkit-input-placeholder { color: #000;}
+input:-moz-placeholder { color: #000;}
+input::-moz-placeholder { color: #000;}
+input:-ms-input-placeholder { color: #000;}
 
-textarea::-webkit-input-placeholder { color: #fff;}
-textarea:-moz-placeholder { color: #fff;}
-textarea::-moz-placeholder { color: #fff;}
-textarea:-ms-input-placeholder { color: #fff;}
+textarea::-webkit-input-placeholder { color: #000;}
+textarea:-moz-placeholder { color: #000;}
+textarea::-moz-placeholder { color: #000;}
+textarea:-ms-input-placeholder { color: #000;}
 
 label {
   margin: 0;
@@ -136,7 +136,7 @@ iframe {
     padding: 0 5px 0 38px;
 }
 
-.focus-input {
+.focus-input-login {
     position: absolute;
     display: block;
     width: 100%;
@@ -146,7 +146,7 @@ iframe {
     pointer-events: none;
   }
   
-  .focus-input::before {
+  .focus-input-login::before {
     content: "";
     display: block;
     position: absolute;
@@ -163,12 +163,57 @@ iframe {
     background: rgb(0, 0, 0);
   }
   
-  .focus-input::after {
+  .focus-input-login::after {
     font-family: Material-Design-Iconic-Font;
     font-size: 22px;
     color: rgb(0, 0, 0);
   
-    content: url("https://img.icons8.com/metro/26/000000/pen.png");
+    content: url("https://img.icons8.com/ios-glyphs/30/000000/user--v1.png");
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 6px;
+    left: 0px;
+    padding-left: 5px;
+  
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+.focus-input-password {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+  
+  .focus-input-password::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+  
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  
+    background: rgb(0, 0, 0);
+  }
+  
+  .focus-input-password::after {
+    font-family: Material-Design-Iconic-Font;
+    font-size: 22px;
+    color: rgb(0, 0, 0);
+  
+    content: url("https://img.icons8.com/ios-glyphs/30/000000/password.png");
     display: block;
     width: 100%;
     position: absolute;
@@ -186,14 +231,46 @@ iframe {
     padding-left: 5px;
   }
   
-  .input:focus + .focus-input::after {
+  .input:focus + .focus-input-login::after  {
     top: -22px;
     font-size: 18px;
   }
   
-  .input:focus + .focus-input::before {
+  .input:focus + .focus-input-login::before {
     width: 100%;
   }
+
+  .input:focus + .focus-input-password::after  {
+    top: -22px;
+    font-size: 18px;
+  }
+  
+  .input:focus + .focus-input-password::before {
+    width: 100%;
+  }
+
+  .input-visible{
+    position: absolute; top: 7px; right: 10px;
+    z-index: 9;
+    outline: none;
+    border: none;
+    display: inline-block;
+    color: #fff;
+    border-radius: 25px;
+    width: 24px;
+    height: 24px;
+
+    cursor: pointer;
+    background: url("https://img.icons8.com/material-rounded/24/000000/closed-eye.png");
+  }
+  
+  .input-visible:hover{
+    background: url("https://img.icons8.com/material-sharp/24/000000/visible.png")
+  }
+
+  
+
+
 
   .container-button {
     width: 100%;

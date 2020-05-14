@@ -7,11 +7,14 @@
                 </div>
                 <div class="form-group wrapInput">
                     <input type="text" formControlName="username" placeholder="Username" class="input">
-                    <span class="focus-input" data-placeholder="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png"></span>
+                    <span class="focus-input-login" ></span>
                 </div>
                 <div class="form-group wrapInput">
-                    <input class="input" type="text" formControlName="password" placeholder="Password">
-                    <span class="focus-input" data-placeholder="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png"></span>
+                    <input #password class="input" type="password" formControlName="password" placeholder="Password">
+                    
+                    <span class="focus-input-password"></span>
+                    <input class="input-visible" type="button" (mouseenter) = "changePassVisibility($event)" (mouseleave) = "changePassVisibility($event)"  value="">
+                    
                 </div>
                 <div class="form-group container-button">
                     <button  type="submit button">Войти</button>
