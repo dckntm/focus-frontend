@@ -1,19 +1,28 @@
-<div class="container">
-    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            Создайте новую организацию
+<div class="limiter">
+    <div class="container-login100">
+        <div class="container">
+            <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+                <div class="form-group title">
+                    Создайте новую организацию
+                </div>
+                <div class="form-group wrapInput">
+                    <input type="text" class="input" formControlName="title" placeholder="Название организации">
+                    <span class="focus-input"></span>
+                </div>
+                <div class="form-group wrapInput">
+                    <input type="text" class="input" formControlName="address" placeholder="Адрес организации">
+                    <span class="focus-input"></span>
+                </div>
+                <div class="form-group wrapInput">
+                    <input type="text" class="input" formControlName="number" placeholder="Номер телефона организации">
+                    <span class="focus-input"></span>
+                </div>
+                <div class="form-group container-button">
+                    <button class="button" type="submit button">Создать</button>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <input type="text" formControlName="title" placeholder="Название организации">
-        </div>
-        <div class="form-group">
-            <input type="text" formControlName="address" placeholder="Адрес организации">
-        </div>
-        <div class="form-group">
-            <input type="text" formControlName="number" placeholder="Номер телефона организации">
-        </div>
-        <div class="form-group">
-            <button type="submit button">Создать</button>
-        </div>
-    </form>
+        
+    </div>
 </div>
+

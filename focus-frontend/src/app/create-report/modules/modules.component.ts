@@ -5,6 +5,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { ModuleComponent } from '../module/module.component';
 import { ReportTemplateService } from '../../servises/report-template.service';
 import { Report } from 'src/app/models/reporet-template';
+import { Router } from '@angular/router';
 
 
 
@@ -55,7 +56,7 @@ export class ModulesComponent implements AfterViewInit {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private componentFactoryResolver: ComponentFactoryResolver, private render: Renderer2, private reportService: ReportTemplateService) {
+  constructor(private breakpointObserver: BreakpointObserver, private componentFactoryResolver: ComponentFactoryResolver, private render: Renderer2, private reportService: ReportTemplateService, private router: Router) {
   }
 
 
@@ -120,7 +121,7 @@ export class ModulesComponent implements AfterViewInit {
 
 
     console.log(JSON.stringify(this.report))
-    
+    this.router.navigate(["/report-list"])
   }
   
 }

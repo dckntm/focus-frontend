@@ -1,7 +1,7 @@
 <div class="container">
     <div class="head">
         <p>Организации</p>
-        <button class="push">Добавить новую организацию</button>
+        <button class="push" (click) = "goCreateOrg()">Добавить новую организацию</button>
     </div>
     <hr>
     <div class="organisation-list" *ngIf="SimpleOrganizations$ | async as SimpleOrganizations">
