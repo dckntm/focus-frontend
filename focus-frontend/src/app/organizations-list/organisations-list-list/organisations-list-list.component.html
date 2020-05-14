@@ -4,10 +4,18 @@
         <button class="push" (click) = "goCreateOrg()">Добавить новую организацию</button>
     </div>
     <hr>
-    <div class="organisation-list" *ngIf="SimpleOrganizations$ | async as SimpleOrganizations">
-        <ul *ngFor="let SimpleOrganization of SimpleOrganizations" class="border">
-            <li>{{SimpleOrganization.title}} <br>
-                <!-- <ng-container *ngIf="show">{{SimpleOrganization.id}}</ng-container> -->
+    <div class="organisation-list">
+        <ul *ngFor="let organization of org" class="border">
+            <li class="li" (click) = "showInfo()">{{organization.title}} <br>
+                <div *ngIf="show">
+                    <ul  *ngFor = "let member of organization.members">
+                        <li>
+                            <p>{{member}}</p>     
+                        </li>
+                    </ul>
+                    <button (click) = "goCreateUser()">Добавить нового сотрудника</button>
+                </div>
+                
             </li>
         </ul>
     </div>
