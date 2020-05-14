@@ -3,6 +3,7 @@ import { CreateTimetableService } from '../../servises/create-timetable.service'
 import { SimpleOrganization } from 'src/app/models/simple-organisation';
 import { Template } from '../../models/templates';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 class Org {
   id:string;
@@ -26,7 +27,7 @@ export class CreateTimetableComponent implements OnInit {
 
   
 
-  constructor(private pageService: CreateTimetableService) { }
+  constructor(private pageService: CreateTimetableService, private router: Router) { }
 
   
 
@@ -114,7 +115,8 @@ export class CreateTimetableComponent implements OnInit {
       this.pageService.postTimetable(this.timetable);
     }
     console.log(this.timetable);
-    console.log(this.orgSelect)
+    console.log(this.orgSelect);
+    this.router.navigate(["/timetable-list"])
   }
 
   change() {
