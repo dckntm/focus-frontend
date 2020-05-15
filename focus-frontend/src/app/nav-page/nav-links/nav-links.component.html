@@ -1,7 +1,44 @@
 <app-nav-header></app-nav-header>
 
 <div class="container">
-    <button class="img1" (click) = "goReports()"><p>Отчёты</p></button>
-    <button class="img2" (click) = "goOrganizations()">Организации</button>
-    <button class="img3" (click) = "goTimetables()">Расписания</button>
+    <div class="elem-container">
+        <div class="picture1"></div>
+        <p class="title">Отчёты</p>
+        <ul>
+            <li>{{passedStatus}}</li>
+            <li>{{overdueStatus}}</li>
+            <li>{{inProgressStatus}}</li>
+        </ul>
+        <div class="form-group container-button">
+            <button class="button" (click) = "goReports()" type="button">Перейти</button>
+        </div>
+    </div>
+    <div class="elem-container">
+        <div class="picture2"></div>
+        <p class="title">Организации</p>
+        <table>
+            <tr>
+                <td>Организации должники:</td>
+                <td *ngIf = "looserOrgs.length == 0">Перейти</td>
+            </tr>
+        </table>
+        <div *ngIf = "looserOrgs.length > 0">
+            <ul *ngFor = "let org of looserOrgs, let in = index">
+                <li>{{org.title}}: {{org.overdueReps}} {{repType[in]}}</li>           
+            </ul>
+        </div>  
+        <div class="form-group container-button">
+            <button class="button" (click)="goOrganizations()" type="button">Перейти</button>
+        </div>     
+    </div>
+    <div class="elem-container">
+        <div class="picture3"></div>
+        <p class="title">Расписания</p> 
+        <p>Доступно шаблонов: {{schedules}}</p>
+        <div class="form-group container-button">
+            <button class="button" (click)="goTimetables()"  type="button">Перейти</button>
+        </div>          
+    </div>
+
+    
 </div>
