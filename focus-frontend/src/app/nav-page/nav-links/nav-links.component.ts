@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavigationService } from 'src/app/servises/navigation.service';
 import { ShortReportInfo } from 'src/app/models/short-organisation';
+import { AuthenticationService } from 'src/app/servises/authentication.service';
 
 class loseOrg{
   title: string;
@@ -26,24 +27,25 @@ export class NavLinksComponent implements OnInit {
   schedules = 0;
   repType: string[] = [];
 
-  constructor(private router: Router, private navigationService:NavigationService) { }
+  constructor(private router: Router, private navigationService:NavigationService, private auth: AuthenticationService) { }
 
   ngOnInit(): void {
       this.navigationService.getAllReports().subscribe(reports => {  
       console.log(reports)  
       this.checkRep(reports);
       this.navigationService.getAllOrgs().subscribe(orgs => {
+        console.log(orgs)
         this.getLoosOrgs(reports, orgs)
       })
     });
-    this.navigationService.getAllSchedules().subscribe(x => {
+    this.navigationService.getAllTemplates().subscribe(x => {
       this.schedules = x.length;
-    })
-    
-
-    
+      console.log(x)
+    });
+    console.log(this.auth.userIsAdmin)
   }
 
+  //check status of reports
   checkRep(x){
     let passed = 0;
     let overdue = 0;
@@ -100,6 +102,7 @@ export class NavLinksComponent implements OnInit {
     }
   }
 
+  //get organizations with overdue reports
   getLoosOrgs(reports, orgs){
     reports.forEach(report => {
       if(report.reportStatus == "Overdue"){
@@ -135,12 +138,8 @@ export class NavLinksComponent implements OnInit {
     })
   }
 
-  getFreeTemplates(){
-
-  }
-
   goReports(){
-    this.router.navigate(["/report-list"])
+    this.router.navigate(["/admin-reports"])
   }
 
   goOrganizations(){

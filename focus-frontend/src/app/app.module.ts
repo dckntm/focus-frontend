@@ -36,6 +36,8 @@ import { NavHeaderComponent } from './nav-page/nav-header/nav-header.component';
 import { NavLinksComponent } from './nav-page/nav-links/nav-links.component';
 import { TimetableHeaderComponent } from './create-timetable/timetable-header/timetable-header.component';
 import { TextMaskModule } from 'angular2-text-mask';
+import { AdminReportsHeaderComponent } from './admin-reports/admin-reports-header/admin-reports-header.component';
+import { AdminReportsListComponent } from './admin-reports/admin-reports-list/admin-reports-list.component';
 
 
 
@@ -62,6 +64,8 @@ import { TextMaskModule } from 'angular2-text-mask';
     NavHeaderComponent,
     NavLinksComponent,
     TimetableHeaderComponent,
+    AdminReportsHeaderComponent,
+    AdminReportsListComponent,
   ],
   imports: [
     BrowserModule,

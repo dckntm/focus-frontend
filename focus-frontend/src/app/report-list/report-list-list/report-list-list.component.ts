@@ -59,7 +59,8 @@ export class ReportListListComponent implements OnInit {
           // maybe wrong
           
             x.forEach(report => {
-              console.log("report: " + report.assignedOrganizationId + " org: " + org.id)
+              
+              console.log(report)
               if (report.assignedOrganizationId == org.id) {
                 orgReports.reports.push(report);
               }

@@ -4,8 +4,9 @@
     <div class="elem-container">
         <div class="picture1"></div>
         <p class="title">Отчёты</p>
+        <hr>
         <ul>
-            <li>{{passedStatus}}</li>
+            <li class="rep-info">{{passedStatus}}</li>
             <li>{{overdueStatus}}</li>
             <li>{{inProgressStatus}}</li>
         </ul>
@@ -16,14 +17,15 @@
     <div class="elem-container">
         <div class="picture2"></div>
         <p class="title">Организации</p>
-        <table>
+        <hr>
+        <table class="info">
             <tr>
                 <td>Организации должники:</td>
-                <td *ngIf = "looserOrgs.length == 0">Перейти</td>
+                <td *ngIf = "looserOrgs.length == 0">отсутствуют</td>
             </tr>
         </table>
-        <div *ngIf = "looserOrgs.length > 0">
-            <ul *ngFor = "let org of looserOrgs, let in = index">
+        <div *ngIf = "looserOrgs.length > 0" class="org-list">
+            <ul *ngFor = "let org of looserOrgs, let in = index" >
                 <li>{{org.title}}: {{org.overdueReps}} {{repType[in]}}</li>           
             </ul>
         </div>  
@@ -34,7 +36,8 @@
     <div class="elem-container">
         <div class="picture3"></div>
         <p class="title">Расписания</p> 
-        <p>Доступно шаблонов: {{schedules}}</p>
+        <hr>
+        <p class="info">Доступно шаблонов: {{schedules}}</p>
         <div class="form-group container-button">
             <button class="button" (click)="goTimetables()"  type="button">Перейти</button>
         </div>          

@@ -12,6 +12,7 @@ import { CreateOrgComponent } from './create-org/create-org.component';
 import { ReportPageComponent } from './report/report-page/report-page.component';
 import { ReportListPageComponent } from '../app/report-list/report-list-page/report-list-page.component'
 import { NavLinksComponent } from './nav-page/nav-links/nav-links.component';
+import { AdminReportsListComponent } from './admin-reports/admin-reports-list/admin-reports-list.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'c-o', component: CreateOrgComponent},
   {path: 'report/:reportId', component: ReportPageComponent},
   {path: 'report-list', component: ReportListPageComponent},
-  {path: 'navigation', component: NavLinksComponent}
+  {path: 'navigation', component: NavLinksComponent},
+  {path: 'admin-reports', component: AdminReportsListComponent}
 
 ];
 

@@ -1,0 +1,19 @@
+<app-admin-reports-header></app-admin-reports-header>
+<div class="container">
+    <div class="head">
+        <p>Отчёты</p>
+        <button class="push" (click) = "goCreateReport()">Добавить новый шаблон</button>
+    </div>
+    <hr>
+    
+    <div>
+        <div class="organisation-list" *ngFor = "let organization of composedReports; let in = index">
+            <p class="title">{{organization.orgTitle}}</p>
+            <ul class="border" *ngFor="let report of organization.reports, let in = index">
+                <li #element [class.li-blue]="color[in] == 0" [class.li-green]="color[in] == 2" [class.li-red]="color[in] == 1" (click)="goReport(report.id)">{{report.title}} <div class="selector"></div></li>
+            </ul>  
+        </div>
+    </div>
+</div>
+
+

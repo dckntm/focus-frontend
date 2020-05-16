@@ -5,15 +5,17 @@
 }
 
 .elem-container{
-    height: 60vh;
+    position: relative;
+    height: 56vh;
     width: 25vw;
     margin-top: 5em;
     border: none;
+    border-radius: 1em;
     box-shadow: 0 0 8px rgba(73, 73, 73, 0.5);
 }
 
 .picture1{
-
+    border-radius: 1em 1em 0 0;
     background: url("../../../images/reports-img.jpg");
     background-size: 100%;
     background-position: center;
@@ -22,6 +24,7 @@
 }
 
 .picture2{
+    border-radius: 1em 1em 0 0;
     background: url("../../../images/organizations-img.jpg");
     background-size: 100%;
     background-position: center;
@@ -30,7 +33,7 @@
 }
 
 .picture3{
-    
+    border-radius: 1em 1em 0 0;
     background-image: url("../../../images/schedules-img.png");
     background-size: 100%;
     background-position: center;
@@ -39,10 +42,10 @@
 }
 
 .title{
-    padding-left: 2em;
+    padding-left: 1em;
     padding-top: 1em;
     text-transform: uppercase;
-    font-size: 2vh;
+    font-size: 3vh;
     font-family: Material-Design-Iconic-Font;
 }
 
@@ -59,22 +62,18 @@ details{
 }
 
 .container-button {
+    position: absolute;
     width: 100%;
     bottom: 0;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
   }
 
   .button {
+    bottom: 1.5em;
     font-size: 16px;
     color: black;
     line-height: 1.2;
-  
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -86,33 +85,8 @@ details{
     min-width: 120px;
     height: 50px;
     border-radius: 25px;
-  
-    // background: #9152f8;
-    // background: -webkit-linear-gradient(to bottom, #7579ff, #b224ef);
-    // background: -o-linear-gradient(to bottom, #7579ff, #b224ef);
-    // background: -moz-linear-gradient(to bottom, #7579ff, #b224ef);
-    // background: linear-gradient(to bottom, #7579ff, #b224ef);
     position: relative;
     z-index: 1;
-  
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    transition: all 0.4s;
-  }
-  
-  .button ::before {
-    content: "";
-    display: block;
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    border-radius: 25px;
-    background-color: #fff;
-    top: 0;
-    left: 0;
-    opacity: 1;
   
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
@@ -126,6 +100,24 @@ details{
   
   .button :hover:before {
     opacity: 0;
+  }
+
+  .info{
+    padding-left: 2em;
+  }
+
+  rep-info{
+    font-size: 1.5em;
+  }
+
+  hr{
+    color: cadetblue;
+    width: 90%;
+  }
+
+  .org-list{
+    position: absolute;
+    padding-left: 1em;
   }
 
 
