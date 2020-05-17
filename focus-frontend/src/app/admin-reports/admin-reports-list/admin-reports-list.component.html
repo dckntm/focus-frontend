@@ -2,10 +2,12 @@
 <div class="container">
     <div class="head">
         <p class="rep">Отчёты</p>
+        <select [ngModel] = "filterActive" (click) = "onClick()" name="select">
+            <option *ngFor = "let fil of filter" [ngValue]="fil">{{fil}}</option>
+        </select>
         <button class="push" (click) = "goCreateReport()">Добавить новый шаблон</button>
     </div>
-    <hr>
-    
+    <hr>   
     <div>
         <div class="organisation-list" *ngFor = "let organization of composedReports; let in = index">
             <p class="title">{{organization.orgTitle}}</p>

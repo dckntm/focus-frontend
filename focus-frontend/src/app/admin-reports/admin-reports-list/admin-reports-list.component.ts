@@ -24,7 +24,8 @@ export class AdminReportsListComponent implements OnInit {
   isAdmin: boolean;
   isNotAdmin: boolean;
   composedReports: OrgReports[];
-  color: number[] = [];
+  filter = ["Все", "Заполненные", "Просроченные", "Не заполненные"];
+  filterActive = "";
 
   constructor(
     private pageService: AdminReportsService, 
@@ -58,22 +59,12 @@ export class AdminReportsListComponent implements OnInit {
               x.forEach(report => {
                 if (report.assignedOrganizationId == org.id) {
                   orgReports.reports.push(report);
-                  if (report.reportStatus == "Overdue"){
-                    this.color.push(1)
-                  } else {
-                    if (report.reportStatus == "Passed"){
-                      this.color.push(0)
-                    } else {
-                      this.color.push(2)
-                    }
-                  }
                 }
                 
               });
             
   
             console.log(orgReports);
-            console.log(this.color)
   
             this.composedReports.push(orgReports);
 
@@ -106,5 +97,9 @@ export class AdminReportsListComponent implements OnInit {
 
   goReport(id){
     this.router.navigate(["/report/" + id])
+  }
+
+  onClick(){
+    console.log(this.filterActive)
   }
 }

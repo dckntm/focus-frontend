@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 })
 export class ModulesComponent implements AfterViewInit {
   //title of module
-  title: string = 'report title';
+  title: string = 'Название отчёта';
 
   //styles of side buttons
   sideButtonStyles: {};

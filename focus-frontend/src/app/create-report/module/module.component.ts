@@ -38,7 +38,7 @@ export class ModuleComponent implements AfterViewInit {
   CurrentOrder = 0;
 
   questionnaire = {
-    title: 'название секции',
+    title: 'Название модуля',
     order: 0,
     sections: [
       {
@@ -66,7 +66,7 @@ export class ModuleComponent implements AfterViewInit {
   constructor() { }
 
   ngAfterViewInit(): void{
-    this.questionnaire.title = this.value.title;
+    this.questionnaire.title = this.questionnaire.title;
     this.questionnaire.order = this.value.order;
   }
 
