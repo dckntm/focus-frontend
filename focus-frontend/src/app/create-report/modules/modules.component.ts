@@ -123,9 +123,6 @@ export class ModulesComponent implements AfterViewInit {
     .subscribe(x => {
       this.router.navigate(["/admin-reports"])
     })
-
-
-    
   }
   
 }

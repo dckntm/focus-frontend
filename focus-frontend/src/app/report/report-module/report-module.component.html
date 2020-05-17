@@ -4,7 +4,7 @@
         <p>{{section.title}}</p>
         <ul>
             <li *ngFor = "let question of questionnaire.sectionAnswers[in].questionAnswers; let i = index">{{question.title}}
-                <input type="text" [(ngModel)] = "question.answer" (ngModelChange) = "onChange($event)">
+                <input type="text" [(ngModel)] = "question.answer" [disabled] = "_isDisabled" (ngModelChange) = "onChange($event)">
             </li>           
         </ul>
     </div>

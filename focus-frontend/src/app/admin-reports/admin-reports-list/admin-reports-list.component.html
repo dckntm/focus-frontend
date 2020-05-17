@@ -2,9 +2,9 @@
 <div class="container">
     <div class="head">
         <p class="rep">Отчёты</p>
-        <select [ngModel] = "filterActive" (click) = "onClick()" name="select">
+        <!-- <select [ngModel] = "filterActive" (click) = "onClick()" name="select">
             <option *ngFor = "let fil of filter" [ngValue]="fil">{{fil}}</option>
-        </select>
+        </select> -->
         <button class="push" (click) = "goCreateReport()">Добавить новый шаблон</button>
     </div>
     <hr>   

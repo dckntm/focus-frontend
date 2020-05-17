@@ -7,6 +7,7 @@ import { ReportService } from 'src/app/servises/report.service';
 import { ReportModuleComponent } from '../report-module/report-module.component';
 import { Questionnaire } from 'src/app/models/module';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/servises/authentication.service';
 
 @Component({
   selector: 'app-report-page',
@@ -20,6 +21,7 @@ export class ReportPageComponent implements OnInit {
   moduleComponents: Array<ReportModuleComponent> = [];
   currentModule = -1;
   title: string;
+  isDisabled = false;
   
 
   @ViewChild('model', {read: ViewContainerRef}) private model: any;
@@ -32,7 +34,7 @@ export class ReportPageComponent implements OnInit {
 
   
 
-  constructor(private breakpointObserver: BreakpointObserver, private pageService: ReportService, private componentFactoryResolver: ComponentFactoryResolver, private route: ActivatedRoute, private router: Router) {
+  constructor(private breakpointObserver: BreakpointObserver, private pageService: ReportService, private componentFactoryResolver: ComponentFactoryResolver, private route: ActivatedRoute, private router: Router, private auth: AuthenticationService) {
     this.route.params.subscribe(params => {
       this.reportId = 
         params["reportId"]
@@ -54,13 +56,18 @@ export class ReportPageComponent implements OnInit {
     moduleComponentRef.instance.initQuestionnaireData(_questionnaire);
     moduleComponentRef.instance.currentStyles={
       display: 'none',
-    }
+    };
+    moduleComponentRef.instance._isDisabled = this.isDisabled;
     console.log(this.currentModule)
   }
 
   processReport(report:Report){
     this.dataR = report;
-    console.log(this.dataR)
+    console.log(this.dataR);
+
+    if(report.status == 0){
+      this.isDisabled = true;
+    }
 
     this.title = this.dataR.title
 
@@ -87,16 +94,28 @@ export class ReportPageComponent implements OnInit {
   passReport() {
     console.log("passed")
     // api/report/pass
-    this.pageService.passReport(this.composeDataForSending());
-    this.router.navigateByUrl('report-list', { skipLocationChange: true});
+    this.pageService.passReport(this.composeDataForSending())
+    .subscribe(x => {
+      if(this.auth.userIsAdmin){
+        this.router.navigateByUrl('admin-reports');
+      } else {
+        this.router.navigateByUrl('report-list');
+      }
+    })  
   }
   
   saveReport(){
     console.log("saved")
     // api/report/save
-    this.pageService.saveReport(this.composeDataForSending());
-    this.router.navigateByUrl('report-list', { skipLocationChange: true});
-    // this.router.navigate("/reports");
+    this.pageService.saveReport(this.composeDataForSending())
+    .subscribe(x => {
+      if(this.auth.userIsAdmin){
+        this.router.navigateByUrl('admin-reports');
+      } else {
+        this.router.navigateByUrl('report-list');
+      }
+    })
+    
   }
 
   setModule(value){

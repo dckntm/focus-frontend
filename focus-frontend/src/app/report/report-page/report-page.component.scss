@@ -19,7 +19,7 @@
 .postButton{
   position: fixed;
   bottom: 0;
-  width: 14vw;
+  width: 15.6vw;
   left: 0;
   border-radius: 0%;
   height: 5vh;
@@ -33,7 +33,7 @@
 .saveButton{
   position: fixed;
   bottom: 6vh;
-  width: 14vw;
+  width: 15.6vw;
   left: 0;
   border-radius: 0%;
   height: 5vh;
@@ -50,4 +50,27 @@
 
 .saveButton:active{
   background-color: grey
+}
+
+.button {
+  height: 6vh;
+  width: 15.6vw;
+  margin: 0;
+  padding: 0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  font: inherit;
+  color: inherit;
+  background-color: white;
+  margin: 2px 0;
+  
+}
+
+.button :active{
+  background-color: grey;
+}
+
+.button:hover {
+  background-color: rgb(224, 224, 224);
 }

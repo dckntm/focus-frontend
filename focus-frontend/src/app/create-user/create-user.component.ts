@@ -57,7 +57,9 @@ export class CreateUserComponent implements OnInit {
     this.pageService
       .postUser(this.form.name.value, this.form.surname.value, this.form.patronymic.value, this.form.organizationId.value, this.form.userRole.value)
       .pipe(first())
-      .subscribe(x => console.log(x))
+      .subscribe(x => {
+        this.router.navigate(["/organizations"])
+      })
   }
 
 }

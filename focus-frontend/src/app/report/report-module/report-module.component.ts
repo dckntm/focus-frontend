@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Questionnaire } from '../../models/module';
 
 @Component({
@@ -10,6 +10,8 @@ export class ReportModuleComponent implements OnInit {
   questionnaire: Questionnaire;
   currentStyles: {
   };
+  
+ _isDisabled: boolean;
 
   constructor() { }
 

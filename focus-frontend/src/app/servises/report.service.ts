@@ -41,13 +41,11 @@ export class ReportService {
   {
     return this.http.post("http://localhost:5000/api/report/pass", report, this.httpOptions)
     .pipe(retry(1), catchError(this.errorHandler))
-    .subscribe(x => console.log(x));
   }
 
   saveReport(report:any)
   {
     return this.http.post("http://localhost:5000/api/report/save", report, this.httpOptions)
     .pipe(retry(1), catchError(this.errorHandler))
-    .subscribe(x => console.log(x));
   }
 }
