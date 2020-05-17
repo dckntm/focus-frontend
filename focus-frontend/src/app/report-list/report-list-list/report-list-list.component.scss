@@ -31,12 +31,11 @@ hr{
     padding: 0;
 }
 .border li{
-    width: 60%;
+    width: 60vw;
     font-family: "Trebuchet MS", "Lucida Sans";
     padding: 7px 20px;
     margin-bottom:10px;
     border-radius: 5px;
-    border-left: 10px solid black;
     box-shadow: 2px -2px 5px 0 rgba(0,0,0,.1),
      -2px -2px 5px 0 rgba(0,0,0,.1),
      2px 2px 5px 0 rgba(0,0,0,.1),
@@ -48,4 +47,20 @@ hr{
 
 .organisation-list{
     justify-content: center;
+}
+
+.title{
+    font-size: large;
+}
+
+.li-green{  
+    border-right: 20px solid greenyellow;
+}
+
+.li-red{
+    border-right: 20px solid red;
+}
+
+.li-blue{
+    border-right: 20px solid blue;
 }
