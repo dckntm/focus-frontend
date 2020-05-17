@@ -3,7 +3,9 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Модули</mat-toolbar>
+    <mat-toolbar><p> Модули</p>
+    </mat-toolbar>
+    
     <mat-nav-list>
       <form #formRef = "ngForm">
         <div *ngFor = "let module of moduleComponents; let in = index">

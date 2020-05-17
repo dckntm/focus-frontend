@@ -1,5 +1,5 @@
 <div class="container" [ngStyle]="currentStyles">
-    <input class="input qInput" type="text" [(ngModel)] = "questionnaire.title" name="title" #title = "ngModel" required>
+    <input class="input" type="text" [(ngModel)] = "questionnaire.title" name="title" #title = "ngModel" required>
     <form #formRef = "ngForm">
         <div *ngFor = "let section of questionnaire.sections; let in = index">
             <div class="form-group">
@@ -11,7 +11,7 @@
   
                     <input type="text" [(ngModel)] = "questionnaire.sections[in].questions[ind].questionText" class="input qInput" name="name2{{ind}}">
                     <select [(ngModel)] = "questionnaire.sections[in].questions[ind].inputType" name="select" (ngModelChange) = "onChange($event)">
-                        <option *ngFor = "let type of keys(types)" [ngValue] = "type">{{types[type]}}</option>
+                        <option *ngFor = "let key of keys" [ngValue] = "key" [label] = "types[key]">{{key}}</option>
                     </select>
                     
                 </div>

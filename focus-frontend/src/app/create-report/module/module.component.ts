@@ -28,7 +28,7 @@ export class ModuleComponent implements AfterViewInit {
     order: number,
   }
 
-  keys = Object.keys;
+  keys: any;
   types = Types;
 
   
@@ -63,7 +63,9 @@ export class ModuleComponent implements AfterViewInit {
 
   
 
-  constructor() { }
+  constructor() {
+    this.keys = Object.keys(this.types).filter(k => !isNaN(Number(k)));
+  }
 
   ngAfterViewInit(): void{
     this.questionnaire.title = this.questionnaire.title;
