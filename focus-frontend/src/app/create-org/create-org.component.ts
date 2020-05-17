@@ -39,7 +39,13 @@ export class CreateOrgComponent implements OnInit {
       
       .postOrg(this.form.id.value, this.form.title.value, this.form.address.value, this.form.number.value, this.form.isHead.value)
       .pipe(first())
-      .subscribe(x => console.log(x))
+      .subscribe(x => {
+        this.goBack();
+      })
+  }
+
+  goBack(){
+    this.router.navigate(["/organizations"]);
   }
 
 }
