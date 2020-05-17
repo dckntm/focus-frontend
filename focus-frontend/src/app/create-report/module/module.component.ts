@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/servises/authentication.service';
 
 export enum Types {
   ShortText = 0,
@@ -43,7 +44,7 @@ export class ModuleComponent implements AfterViewInit {
     sections: [
       {
         title: '1 секция',
-        order: 1,
+        order: 0,
         questions:[
           { 
             questionText: "1 вопрос",
@@ -59,9 +60,6 @@ export class ModuleComponent implements AfterViewInit {
   currOrder: number = this.questionnaire.sections[0].order;
 
   currentStyles: {};
-  
-
-  
 
   constructor() {
     this.keys = Object.keys(this.types).filter(k => !isNaN(Number(k)));

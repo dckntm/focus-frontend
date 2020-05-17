@@ -1,7 +1,7 @@
 import { Component, ViewChild, ViewContainerRef, ComponentFactoryResolver, AfterViewInit, Renderer2} from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { map, shareReplay, first } from 'rxjs/operators';
 import { ModuleComponent } from '../module/module.component';
 import { ReportTemplateService } from '../../servises/report-template.service';
 import { Report } from 'src/app/models/reporet-template';
@@ -117,11 +117,15 @@ export class ModulesComponent implements AfterViewInit {
     for(let i = 0; i < this.moduleComponents.length; i++){
       this.report.questionnaires.push(this.moduleComponents[i].questionnaire);
     }
-    this.reportService.postReport(this.report)
+    this.reportService
+    .postReport(this.report)
+    .pipe(first())
+    .subscribe(x => {
+      this.router.navigate(["/admin-reports"])
+    })
 
 
-    console.log(JSON.stringify(this.report))
-    this.router.navigate(["/report-list"])
+    
   }
   
 }
