@@ -10,12 +10,13 @@ import {
 import { AuthenticationService } from "../servises/authentication.service";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: "root"
 })
 export class ErrorInterceptor implements HttpInterceptor {
-  constructor(private authenticationService: AuthenticationService) {}
+  constructor(private authenticationService: AuthenticationService, private router: Router) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -24,8 +25,10 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((err: HttpErrorResponse) => {
         if (err.status === 401) {
-          this.authenticationService.logout();
-          location.reload(true);
+          this.router.navigate(["/"])
+          alert("Введите логин и пароль чтоб перейти всервис")
+          // this.authenticationService.logout();
+          // location.reload(true);
         }
 
         const error = err.error.message || err.statusText;
