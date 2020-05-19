@@ -113,9 +113,7 @@ export class CreateTimetableComponent implements OnInit {
     if (this.scheduleState)
     {
       this.pageService.counstructReport(this.timetable)
-      .subscribe(x => {
-        this.router.navigate(["/timetable-list"])
-      })
+      
     } else {
       this.pageService.postTimetable(this.timetable)
       .subscribe(x => {
