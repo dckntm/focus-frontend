@@ -29,17 +29,22 @@ export class TimetableListListComponent implements OnInit {
   constructor(private pageService: TimetableListService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.loadTimetables();
+    // this.loadTimetables();
 
     
     
     this.pageService.getOrganisations().subscribe(schedules => {
+      console.log(schedules);
+      console.log("we get schedules")
       this.pageService.getTemplates().subscribe(templates => {
+        console.log(templates)
         this.pageService.getOrgs().subscribe(orgs => {
-          let newShedule = new Schedule;
-          newShedule.organizatins = []
-          console.log(schedules)
+          console.log(orgs)
+          
+          
           schedules.forEach(sched => {
+            let newShedule = new Schedule;
+            newShedule.organizatins = []
             templates.forEach(temp => {
               if(temp.id == sched.reportTemplate){
                 console.log("sucess")
@@ -54,15 +59,16 @@ export class TimetableListListComponent implements OnInit {
               })
             })
             this.schedules.push(newShedule);
-            console.log(newShedule)
+            console.log(newShedule);
+            console.log(this.schedules)
           })
-          
+          console.log("its ready shit")
+          console.log(this.schedules);
         });
       });
 
     });
     
-    console.log(this.schedules);
     
   }
 
