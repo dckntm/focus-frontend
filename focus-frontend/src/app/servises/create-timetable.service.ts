@@ -14,7 +14,6 @@ export class CreateTimetableService {
     return this.http
     .post("http://localhost:5000/api/report/schedule/construct", timetable)
     .pipe(catchError(this.errorHandler))
-    .subscribe(x => console.log(x));
   }
 
   httpOptions = {
@@ -43,7 +42,6 @@ export class CreateTimetableService {
     return this.http
     .post("http://localhost:5000/api/report/schedule", timetable)
     .pipe(catchError(this.errorHandler))
-    .subscribe(x => console.log(x));
   }
 
   

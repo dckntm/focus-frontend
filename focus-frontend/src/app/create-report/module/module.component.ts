@@ -3,16 +3,10 @@ import { AuthenticationService } from 'src/app/servises/authentication.service';
 
 export enum Types {
   ShortText = 0,
-  LongText,
   Email,
   PhoneNumber,
-  Label, // forbidden
   Integer,
   Decimal,
-  Financial,
-  MultipleChoiceOptionList, // forbidden
-  SingleOptionSelect, // forbidden 
-  Boolean
 }
 
 @Component({
