@@ -1,4 +1,5 @@
 .container{
+    position: relative;
     width: 20vw;
     flex-direction: column;
     flex-wrap: wrap;
@@ -70,8 +71,9 @@
   }
 
   .button {
+    position: absolute;
     height: 4.5vh;
-    width: 15vw;
+    width: 33%;
     padding: 0;
     margin-left: 1em;
     border: none;
@@ -91,4 +93,8 @@
 
   p{
     font-size: 2vh;
+  }
+
+  .right{
+    text-align: right;
   }

@@ -13,20 +13,22 @@ import { ReportPageComponent } from './report/report-page/report-page.component'
 import { ReportListPageComponent } from '../app/report-list/report-list-page/report-list-page.component'
 import { NavLinksComponent } from './nav-page/nav-links/nav-links.component';
 import { AdminReportsListComponent } from './admin-reports/admin-reports-list/admin-reports-list.component';
+import { AdminActivate } from './auth/admin.activate';
+import { UserActivate } from './auth/user.activate';
 
 
 const routes: Routes = [
-  {path: 'create-report', component: ModulesComponent},
-  {path: 'timetable', component: CreateTimetableComponent},
+  {path: 'create-report', component: ModulesComponent, canActivate: [AdminActivate, UserActivate]},
+  {path: 'timetable', component: CreateTimetableComponent, canActivate: [AdminActivate, UserActivate]},
   {path: '', component: AuthComponent},
-  {path: 'timetable-list', component: TimetableListPageComponent},
-  {path: 'organizations', component: OrganisationsListPageComponent},
-  {path: 'c-u', component: CreateUserComponent},
-  {path: 'c-o', component: CreateOrgComponent},
-  {path: 'report/:reportId', component: ReportPageComponent},
-  {path: 'report-list', component: ReportListPageComponent},
-  {path: 'navigation', component: NavLinksComponent},
-  {path: 'admin-reports', component: AdminReportsListComponent}
+  {path: 'timetable-list', component: TimetableListPageComponent, canActivate: [AdminActivate, UserActivate]},
+  {path: 'organizations', component: OrganisationsListPageComponent, canActivate: [AdminActivate, UserActivate]},
+  {path: 'c-u', component: CreateUserComponent, canActivate: [AdminActivate, UserActivate]},
+  {path: 'c-o', component: CreateOrgComponent, canActivate: [AdminActivate, UserActivate]},
+  {path: 'report/:reportId', component: ReportPageComponent, canActivate: [UserActivate]},
+  {path: 'report-list', component: ReportListPageComponent, canActivate: [UserActivate]},
+  {path: 'navigation', component: NavLinksComponent, canActivate: [AdminActivate]},
+  {path: 'admin-reports', component: AdminReportsListComponent, canActivate: [AdminActivate]}
 
 ];
 

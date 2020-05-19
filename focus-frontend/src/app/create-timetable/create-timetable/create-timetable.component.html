@@ -16,8 +16,8 @@
         <p>Дедлайн  <input [(ngModel)] = "deadline" type="number">  дней.</p>
         <div [ngStyle]="currentStyles">
             <p>Периодичность <input [(ngModel)] = "period" type="number"> дней.</p>
-            <p>Период: начало <input [(ngModel)] = "timetable.emissionStart" placeholder="__.__.____" type="string"></p>
-            <p>конец <input [(ngModel)] = "timetable.emissionEnd" placeholder="__.__.____" type="string"></p>
+            <p class="right">Период: начало <input [(ngModel)] = "timetable.emissionStart" [textMask]="{mask: mask}" placeholder="__.__.____" type="string"></p>
+            <p class="right">конец <input [(ngModel)] = "timetable.emissionEnd" [textMask]="{mask: mask}" placeholder="__.__.____" type="string"></p>
         </div>
     </div>
     <div class="organisationsList">

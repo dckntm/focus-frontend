@@ -24,12 +24,12 @@ export class ErrorInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       catchError((err: HttpErrorResponse) => {
-        if (err.status === 401) {
-          this.router.navigate(["/"])
-          alert("Введите логин и пароль чтоб перейти всервис")
+        // if (err.status === 401) {
+          // this.router.navigate(["/"])
+          // alert("Введите логин и пароль чтоб перейти всервис")
           // this.authenticationService.logout();
           // location.reload(true);
-        }
+        // }
 
         const error = err.error.message || err.statusText;
         return throwError(error);

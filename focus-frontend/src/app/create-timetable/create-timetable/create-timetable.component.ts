@@ -25,6 +25,8 @@ export class CreateTimetableComponent implements OnInit {
   emissionEnd: Date;
   scheduleState: boolean;
 
+  public mask = [/[1-9]/, /\d/, '.',  /\d/, /\d/, '.', /\d/, /\d/, /\d/, /\d/]
+
   
 
   constructor(private pageService: CreateTimetableService, private router: Router) { }
@@ -116,7 +118,7 @@ export class CreateTimetableComponent implements OnInit {
     }
     console.log(this.timetable);
     console.log(this.orgSelect);
-    this.router.navigate(["/timetable-list"])
+    // this.router.navigate(["/timetable-list"])
   }
 
   change() {
