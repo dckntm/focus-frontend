@@ -76,7 +76,7 @@ export class NavLinksComponent implements OnInit {
       if(this.passedReps == 1){
         this.passedStatus = "Сдан " + this.passedReps + " отчёт"
       }else{
-        if(this.inProgressReps>=2 && this.inProgressReps<= 4)
+        if(this.inProgressReps>=2 || this.inProgressReps<= 4)
         this.passedStatus = "Сдано " + this.passedReps + " отчёта"
       }
     }
