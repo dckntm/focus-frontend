@@ -21,12 +21,17 @@ export class AuthComponent implements OnInit {
   @ViewChild("password") pass: ElementRef;
 
   ngOnInit(){
+
+    if(this.authService.userIsAdmin){
+      this.router.navigate(['/navigation'])
+    } else if(this.authService.userIsLoggedIn){
+      this.router.navigate(['/report-list'])
+    }
+
     this.loginForm = this.formBuilder.group({
       username: ["", Validators.required],
       password: ["", Validators.required]
     });
-
-    this.authService.logout();
 
     this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
   }

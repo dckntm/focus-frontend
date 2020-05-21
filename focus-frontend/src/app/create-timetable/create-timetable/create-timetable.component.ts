@@ -113,6 +113,7 @@ export class CreateTimetableComponent implements OnInit {
     if (this.scheduleState)
     {
       this.pageService.counstructReport(this.timetable)
+      .subscribe(x => console.log(x))
       
     } else {
       this.pageService.postTimetable(this.timetable)
